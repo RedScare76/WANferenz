@@ -1,0 +1,8 @@
+{"observedAt": 1789801781.3568542, "event": "WANFERENZ_JOB_START", "jobId": "greedy-warmup", "ok": null, "elapsedS": null}
+{"observedAt": 1789801935.8284864, "event": "WANFERENZ_JOB_DONE", "jobId": "greedy-warmup", "ok": true, "elapsedS": 154.52}
+{"observedAt": 1789801935.8285441, "event": "WANFERENZ_JOB_START", "jobId": "spec-warmup", "ok": null, "elapsedS": null}
+{"observedAt": 1789802008.5771656, "event": "WANFERENZ_JOB_DONE", "jobId": "spec-warmup", "ok": true, "elapsedS": 72.8}
+{"observedAt": 1789802008.577254, "event": "WANFERENZ_JOB_START", "jobId": "greedy-1", "ok": null, "elapsedS": null}
+{"observedAt": 1789802026.1232605, "event": "WANFERENZ_JOB_DONE", "jobId": "greedy-1", "ok": true, "elapsedS": 17.66}
+{"observedAt": 1789802026.1233046, "event": "WANFERENZ_JOB_START", "jobId": "spec-1", "ok": null, "elapsedS": null}
+{"observedAt": 1789802039.9149492, "event": "WANFERENZ_JOB_DONE", "jobId": "spec-1", "ok": true, "elapsedS": 13.73}

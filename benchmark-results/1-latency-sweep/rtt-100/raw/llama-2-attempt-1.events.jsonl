@@ -1,0 +1,129 @@
+{"atMs": 9050.95301894471, "event": {"index": 0, "content": "**", "tokens": [666], "stop": false, "id_slot": -1, "tokens_predicted": 1, "tokens_evaluated": 26}}
+{"atMs": 9260.857437970117, "event": {"index": 0, "content": "Pipeline", "tokens": [122492], "stop": false, "id_slot": -1, "tokens_predicted": 2, "tokens_evaluated": 26}}
+{"atMs": 9464.796088053845, "event": {"index": 0, "content": " Parallel", "tokens": [50294], "stop": false, "id_slot": -1, "tokens_predicted": 3, "tokens_evaluated": 26}}
+{"atMs": 9652.786734048277, "event": {"index": 0, "content": "ism", "tokens": [1478], "stop": false, "id_slot": -1, "tokens_predicted": 4, "tokens_evaluated": 26}}
+{"atMs": 9848.969078972004, "event": {"index": 0, "content": "**", "tokens": [666], "stop": false, "id_slot": -1, "tokens_predicted": 5, "tokens_evaluated": 26}}
+{"atMs": 10038.362113991752, "event": {"index": 0, "content": " is", "tokens": [344], "stop": false, "id_slot": -1, "tokens_predicted": 6, "tokens_evaluated": 26}}
+{"atMs": 10233.615046949126, "event": {"index": 0, "content": " a", "tokens": [260], "stop": false, "id_slot": -1, "tokens_predicted": 7, "tokens_evaluated": 26}}
+{"atMs": 10426.991875981912, "event": {"index": 0, "content": " model", "tokens": [2645], "stop": false, "id_slot": -1, "tokens_predicted": 8, "tokens_evaluated": 26}}
+{"atMs": 10622.303063981235, "event": {"index": 0, "content": "-par", "tokens": [44972], "stop": false, "id_slot": -1, "tokens_predicted": 9, "tokens_evaluated": 26}}
+{"atMs": 10818.020959035493, "event": {"index": 0, "content": "allel", "tokens": [9528], "stop": false, "id_slot": -1, "tokens_predicted": 10, "tokens_evaluated": 26}}
+{"atMs": 11016.67353801895, "event": {"index": 0, "content": "ism", "tokens": [1478], "stop": false, "id_slot": -1, "tokens_predicted": 11, "tokens_evaluated": 26}}
+{"atMs": 11213.053963962011, "event": {"index": 0, "content": " strategy", "tokens": [7822], "stop": false, "id_slot": -1, "tokens_predicted": 12, "tokens_evaluated": 26}}
+{"atMs": 11410.187800996937, "event": {"index": 0, "content": " where", "tokens": [1479], "stop": false, "id_slot": -1, "tokens_predicted": 13, "tokens_evaluated": 26}}
+{"atMs": 11606.091280002147, "event": {"index": 0, "content": " the", "tokens": [270], "stop": false, "id_slot": -1, "tokens_predicted": 14, "tokens_evaluated": 26}}
+{"atMs": 11798.966043046676, "event": {"index": 0, "content": " layers", "tokens": [14177], "stop": false, "id_slot": -1, "tokens_predicted": 15, "tokens_evaluated": 26}}
+{"atMs": 11993.81374195218, "event": {"index": 0, "content": " of", "tokens": [294], "stop": false, "id_slot": -1, "tokens_predicted": 16, "tokens_evaluated": 26}}
+{"atMs": 12190.680649015121, "event": {"index": 0, "content": " a", "tokens": [260], "stop": false, "id_slot": -1, "tokens_predicted": 17, "tokens_evaluated": 26}}
+{"atMs": 12386.332271038555, "event": {"index": 0, "content": " deep", "tokens": [5212], "stop": false, "id_slot": -1, "tokens_predicted": 18, "tokens_evaluated": 26}}
+{"atMs": 12581.496707978658, "event": {"index": 0, "content": " neural", "tokens": [18308], "stop": false, "id_slot": -1, "tokens_predicted": 19, "tokens_evaluated": 26}}
+{"atMs": 12771.049038972706, "event": {"index": 0, "content": " network", "tokens": [4854], "stop": false, "id_slot": -1, "tokens_predicted": 20, "tokens_evaluated": 26}}
+{"atMs": 12956.693675019778, "event": {"index": 0, "content": " are", "tokens": [477], "stop": false, "id_slot": -1, "tokens_predicted": 21, "tokens_evaluated": 26}}
+{"atMs": 13143.581515992992, "event": {"index": 0, "content": " partitioned", "tokens": [103675], "stop": false, "id_slot": -1, "tokens_predicted": 22, "tokens_evaluated": 26}}
+{"atMs": 13341.33223502431, "event": {"index": 0, "content": " across", "tokens": [3881], "stop": false, "id_slot": -1, "tokens_predicted": 23, "tokens_evaluated": 26}}
+{"atMs": 13534.471782040782, "event": {"index": 0, "content": " multiple", "tokens": [4990], "stop": false, "id_slot": -1, "tokens_predicted": 24, "tokens_evaluated": 26}}
+{"atMs": 13725.265656015836, "event": {"index": 0, "content": " devices", "tokens": [7845], "stop": false, "id_slot": -1, "tokens_predicted": 25, "tokens_evaluated": 26}}
+{"atMs": 13922.760967048816, "event": {"index": 0, "content": " (", "tokens": [343], "stop": false, "id_slot": -1, "tokens_predicted": 26, "tokens_evaluated": 26}}
+{"atMs": 14116.784197976813, "event": {"index": 0, "content": "e", "tokens": [71], "stop": false, "id_slot": -1, "tokens_predicted": 27, "tokens_evaluated": 26}}
+{"atMs": 14315.066998940893, "event": {"index": 0, "content": ".g", "tokens": [3588], "stop": false, "id_slot": -1, "tokens_predicted": 28, "tokens_evaluated": 26}}
+{"atMs": 14506.756220944226, "event": {"index": 0, "content": ".,", "tokens": [1042], "stop": false, "id_slot": -1, "tokens_predicted": 29, "tokens_evaluated": 26}}
+{"atMs": 14705.44507203158, "event": {"index": 0, "content": " GP", "tokens": [21845], "stop": false, "id_slot": -1, "tokens_predicted": 30, "tokens_evaluated": 26}}
+{"atMs": 14893.271235981956, "event": {"index": 0, "content": "Us", "tokens": [8095], "stop": false, "id_slot": -1, "tokens_predicted": 31, "tokens_evaluated": 26}}
+{"atMs": 15085.53543605376, "event": {"index": 0, "content": ")", "tokens": [11], "stop": false, "id_slot": -1, "tokens_predicted": 32, "tokens_evaluated": 26}}
+{"atMs": 15280.097373994067, "event": {"index": 0, "content": " in", "tokens": [295], "stop": false, "id_slot": -1, "tokens_predicted": 33, "tokens_evaluated": 26}}
+{"atMs": 15474.31834996678, "event": {"index": 0, "content": " a", "tokens": [260], "stop": false, "id_slot": -1, "tokens_predicted": 34, "tokens_evaluated": 26}}
+{"atMs": 15668.984367977828, "event": {"index": 0, "content": " sequential", "tokens": [44479], "stop": false, "id_slot": -1, "tokens_predicted": 35, "tokens_evaluated": 26}}
+{"atMs": 15860.0198100321, "event": {"index": 0, "content": " chain", "tokens": [10562], "stop": false, "id_slot": -1, "tokens_predicted": 36, "tokens_evaluated": 26}}
+{"atMs": 16047.014915035106, "event": {"index": 0, "content": ".", "tokens": [16], "stop": false, "id_slot": -1, "tokens_predicted": 37, "tokens_evaluated": 26}}
+{"atMs": 16236.754495999776, "event": {"index": 0, "content": " Each", "tokens": [8829], "stop": false, "id_slot": -1, "tokens_predicted": 38, "tokens_evaluated": 26}}
+{"atMs": 16434.202622971497, "event": {"index": 0, "content": " device", "tokens": [5291], "stop": false, "id_slot": -1, "tokens_predicted": 39, "tokens_evaluated": 26}}
+{"atMs": 16627.281754044816, "event": {"index": 0, "content": " holds", "tokens": [12927], "stop": false, "id_slot": -1, "tokens_predicted": 40, "tokens_evaluated": 26}}
+{"atMs": 16816.628405009396, "event": {"index": 0, "content": " a", "tokens": [260], "stop": false, "id_slot": -1, "tokens_predicted": 41, "tokens_evaluated": 26}}
+{"atMs": 17008.31330602523, "event": {"index": 0, "content": " contiguous", "tokens": [90574], "stop": false, "id_slot": -1, "tokens_predicted": 42, "tokens_evaluated": 26}}
+{"atMs": 17200.44288097415, "event": {"index": 0, "content": " subset", "tokens": [25309], "stop": false, "id_slot": -1, "tokens_predicted": 43, "tokens_evaluated": 26}}
+{"atMs": 17392.978169955313, "event": {"index": 0, "content": " of", "tokens": [294], "stop": false, "id_slot": -1, "tokens_predicted": 44, "tokens_evaluated": 26}}
+{"atMs": 17586.70370397158, "event": {"index": 0, "content": " layers", "tokens": [14177], "stop": false, "id_slot": -1, "tokens_predicted": 45, "tokens_evaluated": 26}}
+{"atMs": 17783.457170939073, "event": {"index": 0, "content": " (", "tokens": [343], "stop": false, "id_slot": -1, "tokens_predicted": 46, "tokens_evaluated": 26}}
+{"atMs": 17977.81281999778, "event": {"index": 0, "content": "a", "tokens": [67], "stop": false, "id_slot": -1, "tokens_predicted": 47, "tokens_evaluated": 26}}
+{"atMs": 18173.81965997629, "event": {"index": 0, "content": " \"", "tokens": [582], "stop": false, "id_slot": -1, "tokens_predicted": 48, "tokens_evaluated": 26}}
+{"atMs": 18369.30072098039, "event": {"index": 0, "content": "stage", "tokens": [47494], "stop": false, "id_slot": -1, "tokens_predicted": 49, "tokens_evaluated": 26}}
+{"atMs": 18564.517028979026, "event": {"index": 0, "content": "\")", "tokens": [5925], "stop": false, "id_slot": -1, "tokens_predicted": 50, "tokens_evaluated": 26}}
+{"atMs": 18757.1999829961, "event": {"index": 0, "content": " and", "tokens": [305], "stop": false, "id_slot": -1, "tokens_predicted": 51, "tokens_evaluated": 26}}
+{"atMs": 18948.959092027508, "event": {"index": 0, "content": " processes", "tokens": [6579], "stop": false, "id_slot": -1, "tokens_predicted": 52, "tokens_evaluated": 26}}
+{"atMs": 19141.26265095547, "event": {"index": 0, "content": " only", "tokens": [1353], "stop": false, "id_slot": -1, "tokens_predicted": 53, "tokens_evaluated": 26}}
+{"atMs": 19336.485296022147, "event": {"index": 0, "content": " the", "tokens": [270], "stop": false, "id_slot": -1, "tokens_predicted": 54, "tokens_evaluated": 26}}
+{"atMs": 19527.50006702263, "event": {"index": 0, "content": " micro", "tokens": [4605], "stop": false, "id_slot": -1, "tokens_predicted": 55, "tokens_evaluated": 26}}
+{"atMs": 19721.33827302605, "event": {"index": 0, "content": "-b", "tokens": [1761], "stop": false, "id_slot": -1, "tokens_predicted": 56, "tokens_evaluated": 26}}
+{"atMs": 19911.827935953625, "event": {"index": 0, "content": "atches", "tokens": [59700], "stop": false, "id_slot": -1, "tokens_predicted": 57, "tokens_evaluated": 26}}
+{"atMs": 20102.123711956665, "event": {"index": 0, "content": " assigned", "tokens": [14037], "stop": false, "id_slot": -1, "tokens_predicted": 58, "tokens_evaluated": 26}}
+{"atMs": 20292.432702961378, "event": {"index": 0, "content": " to", "tokens": [304], "stop": false, "id_slot": -1, "tokens_predicted": 59, "tokens_evaluated": 26}}
+{"atMs": 20487.289441982284, "event": {"index": 0, "content": " it", "tokens": [436], "stop": false, "id_slot": -1, "tokens_predicted": 60, "tokens_evaluated": 26}}
+{"atMs": 20680.91172701679, "event": {"index": 0, "content": " before", "tokens": [1936], "stop": false, "id_slot": -1, "tokens_predicted": 61, "tokens_evaluated": 26}}
+{"atMs": 20871.029515983537, "event": {"index": 0, "content": " passing", "tokens": [14327], "stop": false, "id_slot": -1, "tokens_predicted": 62, "tokens_evaluated": 26}}
+{"atMs": 21069.090974051505, "event": {"index": 0, "content": " activ", "tokens": [2207], "stop": false, "id_slot": -1, "tokens_predicted": 63, "tokens_evaluated": 26}}
+{"atMs": 21263.460397953168, "event": {"index": 0, "content": "ations", "tokens": [706], "stop": false, "id_slot": -1, "tokens_predicted": 64, "tokens_evaluated": 26}}
+{"atMs": 21451.290083001368, "event": {"index": 0, "content": " (", "tokens": [343], "stop": false, "id_slot": -1, "tokens_predicted": 65, "tokens_evaluated": 26}}
+{"atMs": 21643.9887000015, "event": {"index": 0, "content": "forward", "tokens": [19388], "stop": false, "id_slot": -1, "tokens_predicted": 66, "tokens_evaluated": 26}}
+{"atMs": 21838.264220044948, "event": {"index": 0, "content": " pass", "tokens": [2281], "stop": false, "id_slot": -1, "tokens_predicted": 67, "tokens_evaluated": 26}}
+{"atMs": 22028.172777965665, "event": {"index": 0, "content": ")", "tokens": [11], "stop": false, "id_slot": -1, "tokens_predicted": 68, "tokens_evaluated": 26}}
+{"atMs": 22216.33294399362, "event": {"index": 0, "content": " or", "tokens": [469], "stop": false, "id_slot": -1, "tokens_predicted": 69, "tokens_evaluated": 26}}
+{"atMs": 22402.335196034983, "event": {"index": 0, "content": " gradients", "tokens": [59773], "stop": false, "id_slot": -1, "tokens_predicted": 70, "tokens_evaluated": 26}}
+{"atMs": 22594.564851024188, "event": {"index": 0, "content": " (", "tokens": [343], "stop": false, "id_slot": -1, "tokens_predicted": 71, "tokens_evaluated": 26}}
+{"atMs": 22784.688225015998, "event": {"index": 0, "content": "back", "tokens": [3555], "stop": false, "id_slot": -1, "tokens_predicted": 72, "tokens_evaluated": 26}}
+{"atMs": 22981.926606036723, "event": {"index": 0, "content": "ward", "tokens": [1625], "stop": false, "id_slot": -1, "tokens_predicted": 73, "tokens_evaluated": 26}}
+{"atMs": 23175.343881943263, "event": {"index": 0, "content": " pass", "tokens": [2281], "stop": false, "id_slot": -1, "tokens_predicted": 74, "tokens_evaluated": 26}}
+{"atMs": 23363.364688004367, "event": {"index": 0, "content": ")", "tokens": [11], "stop": false, "id_slot": -1, "tokens_predicted": 75, "tokens_evaluated": 26}}
+{"atMs": 23553.843855974264, "event": {"index": 0, "content": " to", "tokens": [304], "stop": false, "id_slot": -1, "tokens_predicted": 76, "tokens_evaluated": 26}}
+{"atMs": 23744.12449495867, "event": {"index": 0, "content": " the", "tokens": [270], "stop": false, "id_slot": -1, "tokens_predicted": 77, "tokens_evaluated": 26}}
+{"atMs": 23937.05184897408, "event": {"index": 0, "content": " adjacent", "tokens": [18885], "stop": false, "id_slot": -1, "tokens_predicted": 78, "tokens_evaluated": 26}}
+{"atMs": 24131.680186023004, "event": {"index": 0, "content": " device", "tokens": [5291], "stop": false, "id_slot": -1, "tokens_predicted": 79, "tokens_evaluated": 26}}
+{"atMs": 24327.000910998322, "event": {"index": 0, "content": ".\n\n", "tokens": [339], "stop": false, "id_slot": -1, "tokens_predicted": 80, "tokens_evaluated": 26}}
+{"atMs": 24522.266739048064, "event": {"index": 0, "content": "**", "tokens": [666], "stop": false, "id_slot": -1, "tokens_predicted": 81, "tokens_evaluated": 26}}
+{"atMs": 24717.782265041023, "event": {"index": 0, "content": "Me", "tokens": [9130], "stop": false, "id_slot": -1, "tokens_predicted": 82, "tokens_evaluated": 26}}
+{"atMs": 24915.46141600702, "event": {"index": 0, "content": "chan", "tokens": [3991], "stop": false, "id_slot": -1, "tokens_predicted": 83, "tokens_evaluated": 26}}
+{"atMs": 25110.46738596633, "event": {"index": 0, "content": "ism", "tokens": [1478], "stop": false, "id_slot": -1, "tokens_predicted": 84, "tokens_evaluated": 26}}
+{"atMs": 25307.206036988646, "event": {"index": 0, "content": ":**", "tokens": [11490], "stop": false, "id_slot": -1, "tokens_predicted": 85, "tokens_evaluated": 26}}
+{"atMs": 25505.95111201983, "event": {"index": 0, "content": "  \n", "tokens": [2143], "stop": false, "id_slot": -1, "tokens_predicted": 86, "tokens_evaluated": 26}}
+{"atMs": 25698.4976970125, "event": {"index": 0, "content": "The", "tokens": [671], "stop": false, "id_slot": -1, "tokens_predicted": 87, "tokens_evaluated": 26}}
+{"atMs": 25890.501735033467, "event": {"index": 0, "content": " training", "tokens": [5026], "stop": false, "id_slot": -1, "tokens_predicted": 88, "tokens_evaluated": 26}}
+{"atMs": 26090.75264004059, "event": {"index": 0, "content": " data", "tokens": [1499], "stop": false, "id_slot": -1, "tokens_predicted": 89, "tokens_evaluated": 26}}
+{"atMs": 26284.888094989583, "event": {"index": 0, "content": " is", "tokens": [344], "stop": false, "id_slot": -1, "tokens_predicted": 90, "tokens_evaluated": 26}}
+{"atMs": 26481.79665103089, "event": {"index": 0, "content": " split", "tokens": [14241], "stop": false, "id_slot": -1, "tokens_predicted": 91, "tokens_evaluated": 26}}
+{"atMs": 26672.050026012585, "event": {"index": 0, "content": " into", "tokens": [1055], "stop": false, "id_slot": -1, "tokens_predicted": 92, "tokens_evaluated": 26}}
+{"atMs": 26867.886623949744, "event": {"index": 0, "content": " micro", "tokens": [4605], "stop": false, "id_slot": -1, "tokens_predicted": 93, "tokens_evaluated": 26}}
+{"atMs": 27060.8880269574, "event": {"index": 0, "content": "-b", "tokens": [1761], "stop": false, "id_slot": -1, "tokens_predicted": 94, "tokens_evaluated": 26}}
+{"atMs": 27257.173427031375, "event": {"index": 0, "content": "atches", "tokens": [59700], "stop": false, "id_slot": -1, "tokens_predicted": 95, "tokens_evaluated": 26}}
+{"atMs": 27454.113646992482, "event": {"index": 0, "content": ".", "tokens": [16], "stop": false, "id_slot": -1, "tokens_predicted": 96, "tokens_evaluated": 26}}
+{"atMs": 27648.478638962843, "event": {"index": 0, "content": " Instead", "tokens": [13548], "stop": false, "id_slot": -1, "tokens_predicted": 97, "tokens_evaluated": 26}}
+{"atMs": 27837.933082017116, "event": {"index": 0, "content": " of", "tokens": [294], "stop": false, "id_slot": -1, "tokens_predicted": 98, "tokens_evaluated": 26}}
+{"atMs": 28031.771527952515, "event": {"index": 0, "content": " waiting", "tokens": [11602], "stop": false, "id_slot": -1, "tokens_predicted": 99, "tokens_evaluated": 26}}
+{"atMs": 28224.989379988983, "event": {"index": 0, "content": " for", "tokens": [362], "stop": false, "id_slot": -1, "tokens_predicted": 100, "tokens_evaluated": 26}}
+{"atMs": 28419.098722049966, "event": {"index": 0, "content": " the", "tokens": [270], "stop": false, "id_slot": -1, "tokens_predicted": 101, "tokens_evaluated": 26}}
+{"atMs": 28613.089906051755, "event": {"index": 0, "content": " entire", "tokens": [5221], "stop": false, "id_slot": -1, "tokens_predicted": 102, "tokens_evaluated": 26}}
+{"atMs": 28807.482530013658, "event": {"index": 0, "content": " batch", "tokens": [26359], "stop": false, "id_slot": -1, "tokens_predicted": 103, "tokens_evaluated": 26}}
+{"atMs": 28998.36593994405, "event": {"index": 0, "content": " to", "tokens": [304], "stop": false, "id_slot": -1, "tokens_predicted": 104, "tokens_evaluated": 26}}
+{"atMs": 29192.72043602541, "event": {"index": 0, "content": " traverse", "tokens": [60567], "stop": false, "id_slot": -1, "tokens_predicted": 105, "tokens_evaluated": 26}}
+{"atMs": 29385.799822048284, "event": {"index": 0, "content": " all", "tokens": [710], "stop": false, "id_slot": -1, "tokens_predicted": 106, "tokens_evaluated": 26}}
+{"atMs": 29577.402833965607, "event": {"index": 0, "content": " stages", "tokens": [13656], "stop": false, "id_slot": -1, "tokens_predicted": 107, "tokens_evaluated": 26}}
+{"atMs": 29775.242386036552, "event": {"index": 0, "content": " (", "tokens": [343], "stop": false, "id_slot": -1, "tokens_predicted": 108, "tokens_evaluated": 26}}
+{"atMs": 29971.747371018864, "event": {"index": 0, "content": "which", "tokens": [9808], "stop": false, "id_slot": -1, "tokens_predicted": 109, "tokens_evaluated": 26}}
+{"atMs": 30167.884130962193, "event": {"index": 0, "content": " would", "tokens": [1114], "stop": false, "id_slot": -1, "tokens_predicted": 110, "tokens_evaluated": 26}}
+{"atMs": 30362.7225010423, "event": {"index": 0, "content": " leave", "tokens": [6559], "stop": false, "id_slot": -1, "tokens_predicted": 111, "tokens_evaluated": 26}}
+{"atMs": 30554.725931957364, "event": {"index": 0, "content": " most", "tokens": [1473], "stop": false, "id_slot": -1, "tokens_predicted": 112, "tokens_evaluated": 26}}
+{"atMs": 30744.253015029244, "event": {"index": 0, "content": " devices", "tokens": [7845], "stop": false, "id_slot": -1, "tokens_predicted": 113, "tokens_evaluated": 26}}
+{"atMs": 30940.307533019222, "event": {"index": 0, "content": " idle", "tokens": [53042], "stop": false, "id_slot": -1, "tokens_predicted": 114, "tokens_evaluated": 26}}
+{"atMs": 31132.456292049028, "event": {"index": 0, "content": "),", "tokens": [754], "stop": false, "id_slot": -1, "tokens_predicted": 115, "tokens_evaluated": 26}}
+{"atMs": 31319.276997004636, "event": {"index": 0, "content": " micro", "tokens": [4605], "stop": false, "id_slot": -1, "tokens_predicted": 116, "tokens_evaluated": 26}}
+{"atMs": 31517.30203605257, "event": {"index": 0, "content": "-b", "tokens": [1761], "stop": false, "id_slot": -1, "tokens_predicted": 117, "tokens_evaluated": 26}}
+{"atMs": 31709.76780494675, "event": {"index": 0, "content": "atches", "tokens": [59700], "stop": false, "id_slot": -1, "tokens_predicted": 118, "tokens_evaluated": 26}}
+{"atMs": 31898.692709975876, "event": {"index": 0, "content": " are", "tokens": [477], "stop": false, "id_slot": -1, "tokens_predicted": 119, "tokens_evaluated": 26}}
+{"atMs": 32096.13990597427, "event": {"index": 0, "content": " injected", "tokens": [43350], "stop": false, "id_slot": -1, "tokens_predicted": 120, "tokens_evaluated": 26}}
+{"atMs": 32292.59289102629, "event": {"index": 0, "content": " one", "tokens": [834], "stop": false, "id_slot": -1, "tokens_predicted": 121, "tokens_evaluated": 26}}
+{"atMs": 32491.496174945496, "event": {"index": 0, "content": " after", "tokens": [1561], "stop": false, "id_slot": -1, "tokens_predicted": 122, "tokens_evaluated": 26}}
+{"atMs": 32684.26669598557, "event": {"index": 0, "content": " another", "tokens": [2658], "stop": false, "id_slot": -1, "tokens_predicted": 123, "tokens_evaluated": 26}}
+{"atMs": 32871.43040995579, "event": {"index": 0, "content": ".", "tokens": [16], "stop": false, "id_slot": -1, "tokens_predicted": 124, "tokens_evaluated": 26}}
+{"atMs": 33062.31690698769, "event": {"index": 0, "content": " This", "tokens": [1162], "stop": false, "id_slot": -1, "tokens_predicted": 125, "tokens_evaluated": 26}}
+{"atMs": 33258.18318594247, "event": {"index": 0, "content": " creates", "tokens": [15170], "stop": false, "id_slot": -1, "tokens_predicted": 126, "tokens_evaluated": 26}}
+{"atMs": 33454.50197800528, "event": {"index": 0, "content": " a", "tokens": [260], "stop": false, "id_slot": -1, "tokens_predicted": 127, "tokens_evaluated": 26}}
+{"atMs": 33652.011767961085, "event": {"index": 0, "content": " steady", "tokens": [19927], "stop": false, "id_slot": -1, "tokens_predicted": 128, "tokens_evaluated": 26}}
+{"atMs": 33652.101224986836, "event": {"index": 0, "content": "", "tokens": [], "id_slot": 0, "stop": true, "model": "ds4-flash-rpc-sweep", "tokens_predicted": 128, "tokens_evaluated": 26, "generation_settings": {"seed": 0, "temperature": 0.0, "dynatemp_range": 0.0, "dynatemp_exponent": 1.0, "top_k": 40, "top_p": 1.0, "min_p": 0.05000000074505806, "top_n_sigma": -1.0, "xtc_probability": 0.0, "xtc_threshold": 0.10000000149011612, "typical_p": 1.0, "repeat_last_n": 64, "repeat_penalty": 1.0, "presence_penalty": 0.0, "frequency_penalty": 0.0, "dry_multiplier": 0.0, "dry_base": 1.75, "dry_allowed_length": 2, "dry_penalty_last_n": 64, "dry_sequence_breakers": ["\n", ":", "\"", "*"], "mirostat": 0, "mirostat_tau": 5.0, "mirostat_eta": 0.10000000149011612, "adaptive_target": -1.0, "adaptive_decay": 0.8999999761581421, "stop": [], "max_tokens": 128, "n_predict": 128, "n_keep": 0, "n_discard": 0, "ignore_eos": false, "stream": true, "logit_bias": [], "n_probs": 0, "min_keep": 0, "grammar": "", "grammar_lazy": false, "grammar_triggers": [], "preserved_tokens": [], "chat_format": "Content-only", "reasoning_format": "deepseek", "reasoning_in_content": false, "generation_prompt": "", "samplers": ["temperature"], "speculative.types": "none", "timings_per_token": false, "post_sampling_probs": false, "backend_sampling": false, "lora": []}, "prompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>", "has_new_line": true, "truncated": false, "stop_type": "limit", "stopping_word": "", "tokens_cached": 153, "timings": {"cache_n": 0, "prompt_n": 26, "prompt_ms": 9049.844, "prompt_per_token_ms": 348.07092307692307, "prompt_per_second": 2.8729776999470933, "predicted_n": 128, "predicted_ms": 24601.027, "predicted_per_token_ms": 193.70887401574802, "predicted_per_second": 5.1623861068889525}}}

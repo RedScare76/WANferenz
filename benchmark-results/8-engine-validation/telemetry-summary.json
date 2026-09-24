@@ -1,0 +1,78 @@
+{
+  "sampleIntervalSeconds": 1,
+  "jobWindowObservationResolutionSeconds": 0.25,
+  "nodes": [
+    {
+      "node": "dgx1",
+      "samples": 814,
+      "baselineUnifiedMemoryGiB": 4.997936248779297,
+      "peakUnifiedMemoryGiB": 91.82457733154297,
+      "peakComputeGpuMemoryGiB": 81.8623046875,
+      "peakGpuUtilizationPct": 95.0,
+      "peakPowerW": 23.74,
+      "peakTemperatureC": 52.0,
+      "jobs": {
+        "greedy-warmup": {
+          "samples": 147,
+          "meanGpuUtilizationPct": 5.945578231292517,
+          "peakGpuUtilizationPct": 78.0,
+          "peakUnifiedMemoryGiB": 91.82457733154297
+        },
+        "spec-warmup": {
+          "samples": 68,
+          "meanGpuUtilizationPct": 12.661764705882353,
+          "peakGpuUtilizationPct": 95.0,
+          "peakUnifiedMemoryGiB": 91.31164169311523
+        },
+        "greedy-1": {
+          "samples": 17,
+          "meanGpuUtilizationPct": 50.8235294117647,
+          "peakGpuUtilizationPct": 79.0,
+          "peakUnifiedMemoryGiB": 90.96000671386719
+        },
+        "spec-1": {
+          "samples": 13,
+          "meanGpuUtilizationPct": 78.92307692307692,
+          "peakGpuUtilizationPct": 95.0,
+          "peakUnifiedMemoryGiB": 90.97107315063477
+        }
+      }
+    },
+    {
+      "node": "dgx2",
+      "samples": 815,
+      "baselineUnifiedMemoryGiB": 3.9691162109375,
+      "peakUnifiedMemoryGiB": 95.1303939819336,
+      "peakComputeGpuMemoryGiB": 84.0146484375,
+      "peakGpuUtilizationPct": 96.0,
+      "peakPowerW": 27.57,
+      "peakTemperatureC": 55.0,
+      "jobs": {
+        "greedy-warmup": {
+          "samples": 147,
+          "meanGpuUtilizationPct": 5.061224489795919,
+          "peakGpuUtilizationPct": 62.0,
+          "peakUnifiedMemoryGiB": 83.21459579467773
+        },
+        "spec-warmup": {
+          "samples": 69,
+          "meanGpuUtilizationPct": 17.18840579710145,
+          "peakGpuUtilizationPct": 96.0,
+          "peakUnifiedMemoryGiB": 95.1303939819336
+        },
+        "greedy-1": {
+          "samples": 16,
+          "meanGpuUtilizationPct": 45.375,
+          "peakGpuUtilizationPct": 61.0,
+          "peakUnifiedMemoryGiB": 92.41779708862305
+        },
+        "spec-1": {
+          "samples": 13,
+          "meanGpuUtilizationPct": 82.53846153846153,
+          "peakGpuUtilizationPct": 95.0,
+          "peakUnifiedMemoryGiB": 91.88230514526367
+        }
+      }
+    }
+  ]
+}

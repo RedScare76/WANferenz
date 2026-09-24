@@ -1,0 +1,35 @@
+{
+  "network": "normal LAN between 192.168.10.152 and 192.168.10.154",
+  "qsfpUsed": false,
+  "networkSettingsChangedByBenchmark": false,
+  "userRequestedRttMs": 80,
+  "initialObservedRttMs": 80.338,
+  "comparisonBaselines": {
+    "lowRtt": "benchmark-results/v4-gb10-head-lan-fixed-20260909/summary.json",
+    "rtt40": "benchmark-results/v4-rtt40-quiet-lan-20260909/summary.json"
+  },
+  "startedUtc": "2026-09-09T18:48:08.394967+00:00",
+  "runtimeSha256": {
+    "v4_stage.py": "9dfdd358f26ee5ad3b8e9881ee12a07ba3a8f8d2519c918106fffcf066b11b30",
+    "v4_pipe.py": "fb499f14d66ef2c39553b24d84f7c60594d1b984e810cac788262d310e0895d4",
+    "v4_head_graph.py": "d9b6113ad93cc5ef18f01f6c51611f8c4e2f52eccd252ae29e84157d96b6e3c2",
+    "v4_dspark_fast.py": "9ec439b3d4407cb41944c5c0374d9e8cdd55079efa1ae7ede0dc7772adc2cad3",
+    "v4_dspark_graph.py": "ee2d88d61768b5c54a595c23c3ffbad3123efecfd469c8b71637165f8b65fca2",
+    "v4_whole_layer_graph.py": "f89a5b5d9b98cbbce34bcd22a5149841372c03ef1cc9d7e1ece5c436b3bf9c98"
+  },
+  "externalLlamaCppRpcComparison": {
+    "runtime": "llama.cpp with RPC",
+    "model": "DS4 Flash",
+    "throughputTps": 5.32,
+    "samePromptConfiguration": true,
+    "sameMachines": true,
+    "sameLatency": true,
+    "runsAndTimingDefinition": "not supplied",
+    "recordedUtc": "2026-09-09T19:01:49.827414+00:00"
+  },
+  "performanceValid": true,
+  "containersStopped": true,
+  "cleanupVerifiedUtc": "2026-09-09T19:05:47.494116+00:00",
+  "measuredJobs": 8,
+  "referenceTokensIdentical": true
+}

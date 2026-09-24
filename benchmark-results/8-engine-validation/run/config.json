@@ -1,0 +1,54 @@
+{
+  "profile": "moe-graph",
+  "dspark": true,
+  "image": "ghcr.io/anemll/dspark-vllm-gx10:0.1.1",
+  "containers": {
+    "head": "wanferenz-v4-20260919T070019Z-head",
+    "tail": "wanferenz-v4-20260919T070019Z-tail",
+    "coordinator": "wanferenz-v4-20260919T070019Z-coord"
+  },
+  "stageEnv": {
+    "PYTHONUNBUFFERED": "1",
+    "OMP_NUM_THREADS": "1",
+    "PYTHONPATH": "/workspace/wanferenz",
+    "V4_LEVERS_STRICT": "1",
+    "V4_SPEC_DEPTH": "2",
+    "V4_MAX_SEQ": "512",
+    "V4_MAX_BATCH": "1",
+    "V4_MOE_DECODE": "1",
+    "V4_CUDA_GRAPH": "whole",
+    "V4_DIAL_RETRY_S": "1800",
+    "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+    "V4_MOE_GROUPED": "1",
+    "V4_MOE_IN_GRAPH": "1",
+    "V4_DSPARK_FAST": "1",
+    "V4_DSPARK_BLOCK": "1",
+    "V4_DSPARK_MOE": "1",
+    "V4_DSPARK_GRAPH": "1",
+    "V4_DSPARK_FULL_GRAPH": "1",
+    "V4_SPEC_SNAPSHOT": "full"
+  },
+  "layers": [
+    [
+      0,
+      23
+    ],
+    [
+      23,
+      43
+    ]
+  ],
+  "remote": "192.168.10.154",
+  "specArms": {
+    "spec": {
+      "depth": 2,
+      "floor": 1,
+      "lazy": true
+    }
+  },
+  "reference": "benchmark-results/v4-full-graph-20260908/summary.json",
+  "stageArms": {},
+  "workload": null,
+  "modelPath": "/tmp/wanferenz-hardware-20260919T065657Z/checkpoint",
+  "sweepPlan": null
+}

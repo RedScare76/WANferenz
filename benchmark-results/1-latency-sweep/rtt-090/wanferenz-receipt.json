@@ -1,0 +1,412 @@
+{
+  "backend": "wanferenz",
+  "ok": true,
+  "workload": {
+    "version": 1,
+    "prompt": "Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.",
+    "renderedPrompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+    "promptIds": [
+      0,
+      128803,
+      21750,
+      260,
+      21886,
+      10021,
+      11394,
+      294,
+      28499,
+      120988,
+      14,
+      1009,
+      6258,
+      2753,
+      14,
+      305,
+      1009,
+      1840,
+      111127,
+      16,
+      42893,
+      3514,
+      5553,
+      16,
+      128804,
+      128822
+    ],
+    "tokenizerSha256": "8f9f37ca37fdc4f5fd36d5cf4d3b0e8392edb4e894fd10cc0d70b4957c8633cf",
+    "outputTokens": 128,
+    "runs": 4,
+    "context": 512,
+    "temperature": 0,
+    "seed": 0,
+    "ignoreEos": false,
+    "thinking": false,
+    "batchSize": 1,
+    "warmups": 1,
+    "cachePrompt": false,
+    "id": "a582b9f187b06416c0e80c318d9b8073ef8ba1547c5375a282dff1ae56a3db04"
+  },
+  "modelLabel": "DeepSeek-V4-Flash-0731 (WANferenz checkpoint)",
+  "sourceDirectory": "/home/martin/wanferenz/benchmark-results/v4-toxiproxy-sweep-20260910-resume01",
+  "identityCheckedAtRecovery": true,
+  "before": {
+    "remote": "192.168.10.154",
+    "interface": "enP7s7",
+    "localHost": {
+      "command": [
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx1\n",
+      "stderr": ""
+    },
+    "remoteHost": {
+      "command": [
+        "ssh",
+        "-F",
+        "/dev/null",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=10.100.176.2",
+        "-o",
+        "ConnectTimeout=10",
+        "-i",
+        "/home/martin/.ssh/id_ed25519",
+        "martin@192.168.10.154",
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx2\n",
+      "stderr": ""
+    },
+    "rtt": {
+      "avgMs": 89.73877504467964,
+      "lossPercent": 0
+    },
+    "proxyProbe": {
+      "jobId": "greedy-r090-warmup",
+      "targetMs": 90,
+      "observed": {
+        "samplesMs": [
+          89.78549495805055,
+          89.60631093941629,
+          88.9778119744733,
+          88.98917294573039,
+          90.48493800219148,
+          89.506501914002,
+          89.72755901049823,
+          89.75482394453138,
+          89.74999107886106,
+          90.2867300901562,
+          89.1893970547244,
+          90.28029697947204
+        ],
+        "medianMs": 89.73877504467964,
+        "avgMs": 89.69491907434228,
+        "minMs": 88.9778119744733,
+        "maxMs": 90.48493800219148
+      },
+      "proxies": [
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-forward",
+          "listen": "127.0.0.1:29621",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-return",
+          "listen": "127.0.0.1:29622",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-echo",
+          "listen": "127.0.0.1:29623",
+          "upstream": "192.168.10.154:29630",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-rpc",
+          "listen": "127.0.0.1:29624",
+          "upstream": "192.168.10.154:50052",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "after": {
+    "remote": "192.168.10.154",
+    "interface": "enP7s7",
+    "localHost": {
+      "command": [
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx1\n",
+      "stderr": ""
+    },
+    "remoteHost": {
+      "command": [
+        "ssh",
+        "-F",
+        "/dev/null",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=10.100.176.2",
+        "-o",
+        "ConnectTimeout=10",
+        "-i",
+        "/home/martin/.ssh/id_ed25519",
+        "martin@192.168.10.154",
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx2\n",
+      "stderr": ""
+    },
+    "rtt": {
+      "avgMs": 89.45073647191748,
+      "lossPercent": 0
+    },
+    "proxyProbe": {
+      "jobId": "greedy-r090-4",
+      "targetMs": 90,
+      "observed": {
+        "samplesMs": [
+          89.92723503615707,
+          89.23673606477678,
+          89.38288094941527,
+          89.51845008414239,
+          89.41513602621853,
+          89.16822297032923,
+          90.04352299962193,
+          90.07584396749735,
+          89.3928490113467,
+          89.95635504834354,
+          89.07054306473583,
+          89.48633691761643
+        ],
+        "medianMs": 89.45073647191748,
+        "avgMs": 89.55617601168342,
+        "minMs": 89.07054306473583,
+        "maxMs": 90.07584396749735
+      },
+      "proxies": [
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-forward",
+          "listen": "127.0.0.1:29621",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-return",
+          "listen": "127.0.0.1:29622",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-echo",
+          "listen": "127.0.0.1:29623",
+          "upstream": "192.168.10.154:29630",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-rpc",
+          "listen": "127.0.0.1:29624",
+          "upstream": "192.168.10.154:50052",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 43,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

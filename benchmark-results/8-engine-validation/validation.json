@@ -1,0 +1,12 @@
+{
+  "benchmarkSucceeded": true,
+  "fourJobsCompleted": true,
+  "allJobsHave128Tokens": true,
+  "allJobsMatchSavedReference": true,
+  "drafterGraphCaptured": true,
+  "runtimeStillMatchesCheckout": true,
+  "noGpuComputeProcessesAfterCleanup": true,
+  "qdiscsUnchanged": true,
+  "workloadByteIdentical": true,
+  "unrelatedContainersPreserved": true
+}

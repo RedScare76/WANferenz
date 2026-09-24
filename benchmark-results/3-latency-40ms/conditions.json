@@ -1,0 +1,21 @@
+{
+  "userConfirmedOtherInferenceEngineStopped": true,
+  "network": "normal LAN between 192.168.10.152 and 192.168.10.154",
+  "qsfpUsed": false,
+  "networkSettingsChangedByBenchmark": false,
+  "userRequestedRttMs": 40,
+  "initialObservedRttMs": 40.218,
+  "comparisonBaseline": "benchmark-results/v4-gb10-head-lan-fixed-20260909/summary.json",
+  "baselineModes": {
+    "greedy": "greedy",
+    "spec": "spec-base"
+  },
+  "baselineRttMs": 1.173,
+  "confirmedUtc": "2026-09-09T17:53:29.844262+00:00",
+  "performanceValid": true,
+  "containersStopped": true,
+  "measuredJobs": 8,
+  "referenceTokensIdentical": true,
+  "preloadRttMs": 39.9,
+  "generationRttMs": 40.203
+}

@@ -1,0 +1,39 @@
+{
+  "checkedUtc": "2026-09-10T02:50:07.048583+00:00",
+  "localContainers": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "remoteContainers": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "localGpu": {
+    "returncode": 0,
+    "stdout": "Thu Sep 10 03:50:07 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.173.02             Driver Version: 580.173.02     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GB10                    On  |   0000000F:01:00.0  On |                  N/A |\n| N/A   49C    P8              4W /  N/A  | Not Supported          |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A         2177576      G   /usr/lib/xorg/Xorg                       66MiB |\n|    0   N/A  N/A         2177667      G   /usr/bin/gnome-shell                     23MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "stderr": ""
+  },
+  "remoteGpu": {
+    "returncode": 0,
+    "stdout": "Thu Sep 10 04:50:08 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.173.02             Driver Version: 580.173.02     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GB10                    On  |   0000000F:01:00.0  On |                  N/A |\n| N/A   45C    P8              4W /  N/A  | Not Supported          |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A           62273      G   /usr/lib/xorg/Xorg                       66MiB |\n|    0   N/A  N/A           62365      G   /usr/bin/gnome-shell                     28MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "stderr": ""
+  },
+  "toxiproxyService": {
+    "returncode": 0,
+    "stdout": "active\n",
+    "stderr": ""
+  },
+  "benchmarkSockets": {
+    "returncode": 0,
+    "stdout": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+    "stderr": ""
+  },
+  "remoteBenchmarkSockets": {
+    "returncode": 0,
+    "stdout": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+    "stderr": ""
+  },
+  "remainingProxies": {}
+}

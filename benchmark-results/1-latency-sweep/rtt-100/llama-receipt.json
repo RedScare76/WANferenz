@@ -1,0 +1,4022 @@
+{
+  "backend": "llama.cpp-rpc",
+  "modelLabel": "DeepSeek-V4-Flash-0731 GGUF",
+  "workload": {
+    "version": 1,
+    "prompt": "Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.",
+    "renderedPrompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+    "promptIds": [
+      0,
+      128803,
+      21750,
+      260,
+      21886,
+      10021,
+      11394,
+      294,
+      28499,
+      120988,
+      14,
+      1009,
+      6258,
+      2753,
+      14,
+      305,
+      1009,
+      1840,
+      111127,
+      16,
+      42893,
+      3514,
+      5553,
+      16,
+      128804,
+      128822
+    ],
+    "tokenizerSha256": "8f9f37ca37fdc4f5fd36d5cf4d3b0e8392edb4e894fd10cc0d70b4957c8633cf",
+    "outputTokens": 128,
+    "runs": 4,
+    "context": 512,
+    "temperature": 0,
+    "seed": 0,
+    "ignoreEos": false,
+    "thinking": false,
+    "batchSize": 1,
+    "warmups": 1,
+    "cachePrompt": false,
+    "id": "a582b9f187b06416c0e80c318d9b8073ef8ba1547c5375a282dff1ae56a3db04"
+  },
+  "props": {
+    "default_generation_settings": {
+      "params": {
+        "seed": 4294967295,
+        "temperature": 1.0,
+        "dynatemp_range": 0.0,
+        "dynatemp_exponent": 1.0,
+        "top_k": 40,
+        "top_p": 1.0,
+        "min_p": 0.05000000074505806,
+        "top_n_sigma": -1.0,
+        "xtc_probability": 0.0,
+        "xtc_threshold": 0.10000000149011612,
+        "typical_p": 1.0,
+        "repeat_last_n": 64,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "dry_multiplier": 0.0,
+        "dry_base": 1.75,
+        "dry_allowed_length": 2,
+        "dry_penalty_last_n": 64,
+        "mirostat": 0,
+        "mirostat_tau": 5.0,
+        "mirostat_eta": 0.10000000149011612,
+        "adaptive_target": -1.0,
+        "adaptive_decay": 0.8999999761581421,
+        "max_tokens": -1,
+        "n_predict": -1,
+        "n_keep": 0,
+        "n_discard": 0,
+        "ignore_eos": false,
+        "stream": false,
+        "n_probs": 0,
+        "min_keep": 0,
+        "chat_format": "Content-only",
+        "reasoning_format": "none",
+        "reasoning_in_content": false,
+        "generation_prompt": "",
+        "samplers": [
+          "penalties",
+          "dry",
+          "top_n_sigma",
+          "top_k",
+          "typ_p",
+          "top_p",
+          "min_p",
+          "xtc",
+          "temperature"
+        ],
+        "speculative.types": "none",
+        "timings_per_token": false,
+        "post_sampling_probs": false,
+        "backend_sampling": false,
+        "lora": []
+      },
+      "n_ctx": 512
+    },
+    "total_slots": 1,
+    "model_alias": "ds4-flash-rpc-sweep",
+    "model_ftype": "GGUF",
+    "model_path": "/home/martin/llama.cpp/models/DeepSeek-V4-Flash-0731-GGUF/DeepSeek-V4-Flash-0731-00001-of-00005.gguf",
+    "modalities": {
+      "vision": false,
+      "video": false,
+      "audio": false
+    },
+    "media_marker": "<__media_jX4uD6Z40pgwx2BSCCNmwUkB0hJbdozj__>",
+    "endpoint_slots": true,
+    "endpoint_props": false,
+    "endpoint_metrics": false,
+    "ui": true,
+    "ui_settings": {},
+    "chat_template": "{#- Unsloth template fixes #}\n{%- if not add_generation_prompt is defined -%}\n  {%- set add_generation_prompt = false -%}\n{%- endif -%}\n{%- if not thinking is defined -%}\n  {%- if enable_thinking is defined -%}\n    {%- set thinking = enable_thinking -%}\n  {%- else -%}\n    {%- set thinking = false -%}\n  {%- endif -%}\n{%- endif -%}\n{%- if not reasoning_effort is defined -%}\n  {%- set reasoning_effort = none -%}\n{%- endif -%}\n{%- set dsml_token = '\uff5cDSML\uff5c' -%}\n{%- set thinking_start_token = '<think>' -%}\n{%- set thinking_end_token = '</think>' -%}\n{%- set reasoning_effort_high = 'Reasoning Effort: Absolute maximum with no shortcuts permitted.\\nYou MUST be very thorough in your thinking and comprehensively decompose the problem to resolve the root cause, rigorously stress-testing your logic against all potential paths, edge cases, and adversarial scenarios.\\nExplicitly write out your entire deliberation process, documenting every intermediate step, considered alternative, and rejected hypothesis to ensure absolutely no assumption is left unchecked.\\n\\n' -%}\n{%- set reasoning_effort_max = 'Reasoning Effort: Beyond maximum \u2014 exhaustive, relentless, and uncompromising.\\nYou MUST reason with the utmost depth and rigor, leaving absolutely nothing to chance: exhaustively decompose the problem into its most fundamental components, trace every causal chain to its root, and resolve the underlying cause rather than any surface symptom.\\nDo not stop reasoning until you have independently verified the solution from multiple angles and are certain that no assumption remains unchecked and no error remains undiscovered.\\n\\n' -%}\n{%- set tools_header = '## Tools\\n\\nYou have access to a set of tools to help answer the user\\'s question. You can invoke tools by writing a \"<' + dsml_token + 'tool_calls>\" block like the following:\\n\\n<' + dsml_token + 'tool_calls>\\n<' + dsml_token + 'invoke name=\"$TOOL_NAME\">\\n<' + dsml_token + 'parameter name=\"$PARAMETER_NAME\" string=\"true|false\">$PARAMETER_VALUE</' + dsml_token + 'parameter>\\n...\\n</' + dsml_token + 'invoke>\\n<' + dsml_token + 'invoke name=\"$TOOL_NAME2\">\\n...\\n</' + dsml_token + 'invoke>\\n</' + dsml_token + 'tool_calls>\\n\\nString parameters should be specified as is and set `string=\"true\"`. For all other types (numbers, booleans, arrays, objects), pass the value in JSON format and set `string=\"false\"`.\\n\\nIf thinking_mode is enabled (triggered by ' + thinking_start_token + '), you MUST output your complete reasoning inside ' + thinking_start_token + '...' + thinking_end_token + ' BEFORE any tool calls or final response.\\n\\nOtherwise, output directly after ' + thinking_end_token + ' with tool calls or final response.\\n\\n### Available Tool Schemas\\n\\n' -%}\n{%- set tools_footer = '\\nYou MUST strictly follow the above defined tool name and parameter schemas to invoke tool calls.\\n' -%}\n{%- set response_format_header = '## Response Format:\\n\\nYou MUST strictly adhere to the following schema to reply:\\n' -%}\n{#- Detect tools anywhere (top-level param or attached to any message): DeepSeek-V4's\n    encoder disables reasoning-dropping entirely when tools are present. -#}\n{%- set tp = namespace(has=false) -%}\n{%- if tools is defined and tools -%}\n  {%- set tp.has = true -%}\n{%- endif -%}\n{%- for message in messages -%}\n  {%- if message['tools'] is defined and message['tools'] -%}\n    {%- set tp.has = true -%}\n  {%- endif -%}\n{%- endfor -%}\n{#- Build system prompt from all system messages (+ optional per-message response_format). -#}\n{%- set ns = namespace(system_prompt='', is_first_sp=true) -%}\n{%- for message in messages -%}\n  {%- if message['role'] == 'system' -%}\n    {%- if ns.is_first_sp -%}\n      {%- set ns.system_prompt = ns.system_prompt + (message['content'] or '') -%}\n      {%- set ns.is_first_sp = false -%}\n    {%- else -%}\n      {%- set ns.system_prompt = ns.system_prompt + '\\n\\n' + (message['content'] or '') -%}\n    {%- endif -%}\n    {%- if message['response_format'] is defined and message['response_format'] -%}\n      {%- set ns.system_prompt = ns.system_prompt + '\\n\\n' + response_format_header + (message['response_format'] | tojson) -%}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if tools is defined and tools -%}\n  {%- set ts = namespace(schemas='') -%}\n  {%- for tool in tools -%}\n    {%- if tool['type'] == 'function' -%}\n      {%- set ts.schemas = ts.schemas + (tool['function'] | tojson) + '\\n' -%}\n    {%- endif -%}\n  {%- endfor -%}\n  {#- Match the reference: tools attach to the system message, so a system message\n      that exists but is empty still contributes its \"\" + \"\\n\\n\" separator. -#}\n  {%- if not ns.is_first_sp -%}\n    {%- set ns.system_prompt = ns.system_prompt + '\\n\\n' + tools_header + ts.schemas + tools_footer -%}\n  {%- else -%}\n    {%- set ns.system_prompt = tools_header + ts.schemas + tools_footer -%}\n  {%- endif -%}\n{%- endif -%}\n{{- bos_token -}}\n{%- if thinking -%}\n  {%- if reasoning_effort == 'high' -%}\n    {{- reasoning_effort_high -}}\n  {%- elif reasoning_effort == 'max' -%}\n    {{- reasoning_effort_max -}}\n  {%- endif -%}\n{%- endif -%}\n{{- ns.system_prompt -}}\n{#- Last user-like index: controls which turns keep reasoning. The encoder merges tool\n    results into user messages before computing this, so tool turns count as user here. -#}\n{%- set last_user_idx = namespace(value=-1) -%}\n{%- for message in messages -%}\n  {%- if message['role'] == 'user' or message['role'] == 'developer' or message['role'] == 'tool' -%}\n    {%- set last_user_idx.value = loop.index0 -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- set state = namespace(in_user=false) -%}\n{%- for message in messages -%}\n  {%- if message['role'] == 'user' -%}\n    {%- if state.in_user -%}\n      {{- '\\n\\n' -}}\n    {%- else -%}\n      {{- '<\uff5cUser\uff5c>' -}}\n      {%- set state.in_user = true -%}\n    {%- endif -%}\n    {{- message['content'] or '' -}}\n    {%- if message['task'] is defined and message['task'] and (loop.last or messages[loop.index0 + 1]['role'] in ['assistant', 'latest_reminder']) -%}\n      {%- set state.in_user = false -%}\n      {%- if message['task'] == 'action' -%}\n        {{- '<\uff5cAssistant\uff5c>' -}}\n        {%- if thinking -%}{{- thinking_start_token -}}{%- else -%}{{- thinking_end_token -}}{%- endif -%}\n        {{- '<\uff5caction\uff5c>' -}}\n      {%- else -%}\n        {{- '<\uff5c' + message['task'] + '\uff5c>' -}}\n      {%- endif -%}\n    {%- endif -%}\n  {%- elif message['role'] == 'tool' -%}\n    {%- if state.in_user -%}\n      {{- '\\n\\n' -}}\n    {%- else -%}\n      {{- '<\uff5cUser\uff5c>' -}}\n      {%- set state.in_user = true -%}\n    {%- endif -%}\n    {{- '<tool_result>' + (message['content'] or '') + '</tool_result>' -}}\n  {%- elif message['role'] == 'developer' -%}\n    {#- The encoder's _drop_thinking_messages drops developer turns that sit before the\n        last user turn when in thinking mode with reasoning-dropping active (no tools).\n        (No-op under llama.cpp, which remaps developer -> system before templating.) -#}\n    {%- if thinking and not tp.has and loop.index0 < last_user_idx.value -%}\n    {%- else -%}\n    {%- set state.in_user = false -%}\n    {{- '<\uff5cUser\uff5c>' + (message['content'] or '') -}}\n    {%- if message['tools'] is defined and message['tools'] -%}\n      {%- set ds = namespace(schemas='') -%}\n      {%- for tool in message['tools'] -%}\n        {%- if tool['type'] == 'function' -%}\n          {%- set ds.schemas = ds.schemas + (tool['function'] | tojson) + '\\n' -%}\n        {%- endif -%}\n      {%- endfor -%}\n      {{- '\\n\\n' + tools_header + ds.schemas + tools_footer -}}\n    {%- endif -%}\n    {%- if message['response_format'] is defined and message['response_format'] -%}\n      {{- '\\n\\n' + response_format_header + (message['response_format'] | tojson) -}}\n    {%- endif -%}\n    {%- if message['task'] is defined and message['task'] and (loop.last or messages[loop.index0 + 1]['role'] in ['assistant', 'latest_reminder']) -%}\n      {%- if message['task'] == 'action' -%}\n        {{- '<\uff5cAssistant\uff5c>' -}}\n        {%- if thinking -%}{{- thinking_start_token -}}{%- else -%}{{- thinking_end_token -}}{%- endif -%}\n        {{- '<\uff5caction\uff5c>' -}}\n      {%- else -%}\n        {{- '<\uff5c' + message['task'] + '\uff5c>' -}}\n      {%- endif -%}\n    {%- endif -%}\n    {%- endif -%}\n  {%- elif message['role'] == 'latest_reminder' -%}\n    {%- set state.in_user = false -%}\n    {#- The encoder emits the user/developer -> assistant transition before a\n        latest_reminder as well (the opening think stays open across the reminder and is\n        closed by the following assistant). Same effective-predecessor rule as assistant. -#}\n    {%- set ep = namespace(idx=(loop.index0 - 1), done=false, is_ud=false, has_task=false) -%}\n    {%- for _i in range(loop.index0) -%}\n      {%- if not ep.done and ep.idx >= 0 -%}\n        {%- set _pm = messages[ep.idx] -%}\n        {%- if (_pm['role'] == 'developer') and thinking and (not tp.has) and (ep.idx < last_user_idx.value) -%}\n          {%- set ep.idx = ep.idx - 1 -%}\n        {%- else -%}\n          {%- set ep.done = true -%}\n          {%- set ep.is_ud = _pm['role'] in ['user', 'developer', 'tool'] -%}\n          {%- set ep.has_task = _pm['task'] is defined and _pm['task'] -%}\n        {%- endif -%}\n      {%- endif -%}\n    {%- endfor -%}\n    {%- if ep.has_task -%}\n    {%- elif ep.is_ud -%}\n      {{- '<\uff5cAssistant\uff5c>' -}}\n      {%- if thinking and (tp.has or (loop.index0 > last_user_idx.value)) -%}\n        {{- thinking_start_token -}}\n      {%- else -%}\n        {{- thinking_end_token -}}\n      {%- endif -%}\n    {%- endif -%}\n    {{- '<\uff5clatest_reminder\uff5c>' + (message['content'] or '') -}}\n  {%- elif message['role'] == 'assistant' -%}\n    {%- set state.in_user = false -%}\n    {#- The encoder emits the \"<\uff5cAssistant\uff5c>\" + opening think/end token as a trailing\n        transition on a user/developer predecessor (tool results merge into user), never\n        on the assistant message itself. Find the effective predecessor, skipping any\n        developer the encoder drops (developer before the last user in thinking+drop). -#}\n    {%- set ep = namespace(idx=(loop.index0 - 1), done=false, is_ud=false, has_task=false) -%}\n    {%- for _i in range(loop.index0) -%}\n      {%- if not ep.done and ep.idx >= 0 -%}\n        {%- set _pm = messages[ep.idx] -%}\n        {%- if (_pm['role'] == 'developer') and thinking and (not tp.has) and (ep.idx < last_user_idx.value) -%}\n          {%- set ep.idx = ep.idx - 1 -%}\n        {%- else -%}\n          {%- set ep.done = true -%}\n          {%- set ep.is_ud = _pm['role'] in ['user', 'developer', 'tool'] -%}\n          {%- set ep.has_task = _pm['task'] is defined and _pm['task'] -%}\n        {%- endif -%}\n      {%- endif -%}\n    {%- endfor -%}\n    {%- set keep_reasoning = tp.has or (loop.index0 > last_user_idx.value) -%}\n    {%- if ep.has_task -%}\n      {#- The predecessor's task token already emitted the assistant prompt. -#}\n    {%- elif ep.is_ud -%}\n      {{- '<\uff5cAssistant\uff5c>' -}}\n      {%- if keep_reasoning and thinking -%}\n        {{- thinking_start_token -}}\n        {%- if message['reasoning_content'] is defined and message['reasoning_content'] -%}\n          {{- message['reasoning_content'] -}}\n        {%- endif -%}\n        {{- thinking_end_token -}}\n      {%- else -%}\n        {{- thinking_end_token -}}\n      {%- endif -%}\n    {%- else -%}\n      {#- Predecessor is not user/developer/tool (first turn, latest_reminder, another\n          assistant, or an all-dropped-developer run): the encoder emits no prefix and\n          no opening think; a kept reasoning turn still closes with its content + </think>. -#}\n      {%- if keep_reasoning and thinking -%}\n        {%- if message['reasoning_content'] is defined and message['reasoning_content'] -%}\n          {{- message['reasoning_content'] -}}\n        {%- endif -%}\n        {{- thinking_end_token -}}\n      {%- endif -%}\n    {%- endif -%}\n    {%- if message['content'] is defined and message['content'] -%}\n      {{- message['content'] -}}\n    {%- endif -%}\n    {%- if message['tool_calls'] -%}\n      {{- '\\n\\n<' + dsml_token + 'tool_calls>\\n' -}}\n      {%- for tool in message['tool_calls'] -%}\n        {%- set func = tool['function'] -%}\n        {{- '<' + dsml_token + 'invoke name=\"' + func['name'] + '\">\\n' -}}\n        {%- set args = func['arguments'] -%}\n        {%- if args is string -%}\n          {%- set args = args | from_json -%}\n        {%- endif -%}\n        {%- for key, val in args.items() -%}\n          {%- if val is string -%}\n            {{- '<' + dsml_token + 'parameter name=\"' + key + '\" string=\"true\">' + val + '</' + dsml_token + 'parameter>\\n' -}}\n          {%- else -%}\n            {{- '<' + dsml_token + 'parameter name=\"' + key + '\" string=\"false\">' + (val | tojson) + '</' + dsml_token + 'parameter>\\n' -}}\n          {%- endif -%}\n        {%- endfor -%}\n        {{- '</' + dsml_token + 'invoke>\\n' -}}\n      {%- endfor -%}\n      {{- '</' + dsml_token + 'tool_calls>' -}}\n    {%- endif -%}\n    {{- '<\uff5cend\u2581of\u2581sentence\uff5c>' -}}\n    {%- if message['task'] is defined and message['task'] == 'title' and (loop.last or messages[loop.index0 + 1]['role'] in ['assistant', 'latest_reminder']) -%}\n      {{- '<\uff5ctitle\uff5c>' -}}\n    {%- endif -%}\n  {%- endif -%}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n  {#- Suppress the standard generation prefix when the final message already\n      emitted a task token (which serves as the generation prompt). -#}\n  {%- set _last = messages[messages | length - 1] -%}\n  {%- if not (_last['task'] is defined and _last['task']) -%}\n    {{- '<\uff5cAssistant\uff5c>' -}}\n    {%- if thinking -%}\n      {{- thinking_start_token -}}\n    {%- else -%}\n      {{- thinking_end_token -}}\n    {%- endif -%}\n  {%- endif -%}\n{%- endif -%}\n{#- Copyright 2026-present Unsloth. Apache 2.0 License. #}",
+    "chat_template_caps": {
+      "supports_object_arguments": true,
+      "supports_parallel_tool_calls": true,
+      "supports_preserve_reasoning": false,
+      "supports_reasoning_effort": true,
+      "supports_string_content": true,
+      "supports_system_role": true,
+      "supports_tool_calls": true,
+      "supports_tools": true,
+      "supports_typed_content": false
+    },
+    "bos_token": "<\uff5cbegin\u2581of\u2581sentence\uff5c>",
+    "eos_token": "<\uff5cend\u2581of\u2581sentence\uff5c>",
+    "build_info": "b10867-f3f1a8f27",
+    "is_sleeping": false,
+    "cors_proxy_enabled": false
+  },
+  "ok": true,
+  "jobs": [
+    {
+      "jobId": "llama-warmup",
+      "tokenIds": [
+        666,
+        122492,
+        50294,
+        1478,
+        666,
+        344,
+        260,
+        2645,
+        44972,
+        9528,
+        1478,
+        7822,
+        1479,
+        270,
+        14177,
+        294,
+        260,
+        5212,
+        18308,
+        4854,
+        477,
+        103675,
+        3881,
+        4990,
+        7845,
+        343,
+        71,
+        3588,
+        1042,
+        21845,
+        8095,
+        11,
+        295,
+        260,
+        44479,
+        10562,
+        16,
+        8829,
+        5291,
+        12927,
+        260,
+        90574,
+        25309,
+        294,
+        14177,
+        343,
+        67,
+        582,
+        47494,
+        5925,
+        305,
+        6579,
+        1353,
+        270,
+        4605,
+        1761,
+        59700,
+        14037,
+        304,
+        436,
+        1936,
+        14327,
+        2207,
+        706,
+        343,
+        19388,
+        2281,
+        11,
+        469,
+        59773,
+        343,
+        3555,
+        1625,
+        2281,
+        11,
+        304,
+        270,
+        18885,
+        5291,
+        339,
+        666,
+        9130,
+        3991,
+        1478,
+        11490,
+        2143,
+        671,
+        5026,
+        1499,
+        344,
+        14241,
+        1055,
+        4605,
+        1761,
+        59700,
+        16,
+        13548,
+        294,
+        11602,
+        362,
+        270,
+        5221,
+        26359,
+        304,
+        60567,
+        710,
+        13656,
+        343,
+        9808,
+        1114,
+        6559,
+        1473,
+        7845,
+        53042,
+        754,
+        4605,
+        1761,
+        59700,
+        477,
+        43350,
+        834,
+        1561,
+        2658,
+        16,
+        1162,
+        15170,
+        260,
+        19927
+      ],
+      "tokenTimesMs": [
+        9044.913990073837,
+        9252.540195011534,
+        9452.324990998022,
+        9646.497298032045,
+        9839.262878056616,
+        10033.591761020944,
+        10224.694631062448,
+        10421.118099009618,
+        10616.93095706869,
+        10813.215657020919,
+        11005.020514014177,
+        11197.321485029534,
+        11390.691420063376,
+        11586.493447073735,
+        11780.773609993048,
+        11976.057681022212,
+        12166.332739056088,
+        12359.28526497446,
+        12552.904081065208,
+        12747.670406010002,
+        12941.568472073413,
+        13135.267705074511,
+        13330.310591030866,
+        13525.382357998751,
+        13721.65856207721,
+        13921.458669006824,
+        14117.406359058805,
+        14311.509034014307,
+        14504.216709989123,
+        14698.213192052208,
+        14894.074914045632,
+        15091.001569060609,
+        15284.271295065992,
+        15478.880804032087,
+        15673.096471000463,
+        15867.364090052433,
+        16062.75134603493,
+        16255.585934966803,
+        16451.874378020875,
+        16645.2599769691,
+        16837.498372071423,
+        17035.441191052087,
+        17238.428015029058,
+        17433.52888606023,
+        17626.613444066606,
+        17818.023993982933,
+        18016.556448070332,
+        18209.176619071513,
+        18408.436772064306,
+        18605.334994965233,
+        18802.583058015443,
+        18998.308876063675,
+        19195.74753206689,
+        19389.68780497089,
+        19585.166614037007,
+        19780.50756501034,
+        19980.857866001315,
+        20175.48287799582,
+        20372.29725997895,
+        20571.43726805225,
+        20769.23485402949,
+        20963.821370038204,
+        21162.794482079335,
+        21359.70500705298,
+        21555.514825042337,
+        21749.454442062415,
+        21945.71952498518,
+        22136.62116206251,
+        22329.423606046475,
+        22522.282946971245,
+        22713.39791303035,
+        22905.3836009698,
+        23097.323338035494,
+        23288.2858379744,
+        23477.445931057446,
+        23669.86896598246,
+        23860.895739053376,
+        24054.363050032407,
+        24246.925765066408,
+        24438.88860696461,
+        24628.84134298656,
+        24818.88268701732,
+        25011.774220038205,
+        25203.354674973525,
+        25396.45614498295,
+        25587.20336400438,
+        25775.80590301659,
+        25967.320485040545,
+        26157.900823978707,
+        26348.28924201429,
+        26537.9390809685,
+        26733.174527063966,
+        26926.997247966938,
+        27121.268275077455,
+        27309.114602045156,
+        27495.611018966883,
+        27689.873725059442,
+        27879.103161976673,
+        28069.806031067856,
+        28262.454792973585,
+        28452.29458506219,
+        28644.036559970118,
+        28836.48049097974,
+        29030.765470000915,
+        29218.886533984914,
+        29412.301301024854,
+        29598.55845302809,
+        29789.604809018783,
+        29982.030612998642,
+        30173.918443964794,
+        30364.599407068454,
+        30555.34160300158,
+        30748.746033059433,
+        30937.99999798648,
+        31129.819880006835,
+        31319.675061968155,
+        31514.210441033356,
+        31702.49200204853,
+        31890.697962022386,
+        32082.22169696819,
+        32273.63565505948,
+        32466.618117061444,
+        32656.84075700119,
+        32849.19859201182,
+        33041.75597906578,
+        33237.422531004995,
+        33426.59591906704,
+        33619.89439697936
+      ],
+      "text": "**Pipeline Parallelism** is a model-parallelism strategy where the layers of a deep neural network are partitioned across multiple devices (e.g., GPUs) in a sequential chain. Each device holds a contiguous subset of layers (a \"stage\") and processes only the micro-batches assigned to it before passing activations (forward pass) or gradients (backward pass) to the adjacent device.\n\n**Mechanism:**  \nThe training data is split into micro-batches. Instead of waiting for the entire batch to traverse all stages (which would leave most devices idle), micro-batches are injected one after another. This creates a steady",
+      "metrics": {
+        "overallTps": 3.8072551135603323,
+        "decodeTps": 5.167857629880886,
+        "ttftMs": 9044.913990073837,
+        "elapsedMs": 33620.02182204742,
+        "decodeMs": 24574.980406905524,
+        "effectivePromptTps": 2.8745436417121475,
+        "itlMs": {
+          "mean": 193.50378273153956,
+          "median": 193.2984779123217,
+          "p95": 199.08993926364928,
+          "p99": 202.30132800061256,
+          "min": 186.25715200323611,
+          "max": 207.62620493769646
+        }
+      },
+      "nativeTimings": {
+        "cache_n": 0,
+        "prompt_n": 26,
+        "prompt_ms": 9043.663,
+        "prompt_per_token_ms": 347.83319230769234,
+        "prompt_per_second": 2.8749412710314393,
+        "predicted_n": 128,
+        "predicted_ms": 24574.636,
+        "predicted_per_token_ms": 193.50107086614173,
+        "predicted_per_second": 5.1679300560138515
+      },
+      "request": {
+        "prompt": [
+          0,
+          128803,
+          21750,
+          260,
+          21886,
+          10021,
+          11394,
+          294,
+          28499,
+          120988,
+          14,
+          1009,
+          6258,
+          2753,
+          14,
+          305,
+          1009,
+          1840,
+          111127,
+          16,
+          42893,
+          3514,
+          5553,
+          16,
+          128804,
+          128822
+        ],
+        "n_predict": 128,
+        "temperature": 0,
+        "seed": 0,
+        "ignore_eos": false,
+        "cache_prompt": false,
+        "stream": true,
+        "return_tokens": true,
+        "timings_per_token": false,
+        "stop": [],
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "samplers": [
+          "temperature"
+        ],
+        "id_slot": 0
+      },
+      "final": {
+        "index": 0,
+        "content": "",
+        "tokens": [],
+        "id_slot": 0,
+        "stop": true,
+        "model": "ds4-flash-rpc-sweep",
+        "tokens_predicted": 128,
+        "tokens_evaluated": 26,
+        "generation_settings": {
+          "seed": 0,
+          "temperature": 0.0,
+          "dynatemp_range": 0.0,
+          "dynatemp_exponent": 1.0,
+          "top_k": 40,
+          "top_p": 1.0,
+          "min_p": 0.05000000074505806,
+          "top_n_sigma": -1.0,
+          "xtc_probability": 0.0,
+          "xtc_threshold": 0.10000000149011612,
+          "typical_p": 1.0,
+          "repeat_last_n": 64,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "frequency_penalty": 0.0,
+          "dry_multiplier": 0.0,
+          "dry_base": 1.75,
+          "dry_allowed_length": 2,
+          "dry_penalty_last_n": 64,
+          "dry_sequence_breakers": [
+            "\n",
+            ":",
+            "\"",
+            "*"
+          ],
+          "mirostat": 0,
+          "mirostat_tau": 5.0,
+          "mirostat_eta": 0.10000000149011612,
+          "adaptive_target": -1.0,
+          "adaptive_decay": 0.8999999761581421,
+          "stop": [],
+          "max_tokens": 128,
+          "n_predict": 128,
+          "n_keep": 0,
+          "n_discard": 0,
+          "ignore_eos": false,
+          "stream": true,
+          "logit_bias": [],
+          "n_probs": 0,
+          "min_keep": 0,
+          "grammar": "",
+          "grammar_lazy": false,
+          "grammar_triggers": [],
+          "preserved_tokens": [],
+          "chat_format": "Content-only",
+          "reasoning_format": "deepseek",
+          "reasoning_in_content": false,
+          "generation_prompt": "",
+          "samplers": [
+            "temperature"
+          ],
+          "speculative.types": "none",
+          "timings_per_token": false,
+          "post_sampling_probs": false,
+          "backend_sampling": false,
+          "lora": []
+        },
+        "prompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+        "has_new_line": true,
+        "truncated": false,
+        "stop_type": "limit",
+        "stopping_word": "",
+        "tokens_cached": 153,
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 26,
+          "prompt_ms": 9043.663,
+          "prompt_per_token_ms": 347.83319230769234,
+          "prompt_per_second": 2.8749412710314393,
+          "predicted_n": 128,
+          "predicted_ms": 24574.636,
+          "predicted_per_token_ms": 193.50107086614173,
+          "predicted_per_second": 5.1679300560138515
+        }
+      },
+      "networkBefore": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            100.12194991577417,
+            99.44473195355386,
+            100.24967894423753,
+            99.82943895738572,
+            99.85495696309954,
+            100.32519907690585,
+            100.01233499497175,
+            100.18705402035266,
+            100.17145599704236,
+            100.26427102275193,
+            100.11763102374971,
+            99.05040997546166
+          ],
+          "medianMs": 100.11979046976194,
+          "avgMs": 99.96909273710723,
+          "minMs": 99.05040997546166,
+          "maxMs": 100.32519907690585
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "networkAfter": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            99.85926107037812,
+            98.71644002851099,
+            99.60258798673749,
+            99.0604730322957,
+            99.68036401551217,
+            99.66482792515308,
+            100.40780808776617,
+            100.43025494087487,
+            99.40188296604902,
+            100.43491097167134,
+            99.22210802324116,
+            99.17703305836767
+          ],
+          "medianMs": 99.63370795594528,
+          "avgMs": 99.63816267554648,
+          "minMs": 98.71644002851099,
+          "maxMs": 100.43491097167134
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "jobId": "llama-1",
+      "tokenIds": [
+        666,
+        122492,
+        50294,
+        1478,
+        666,
+        344,
+        260,
+        2645,
+        44972,
+        9528,
+        1478,
+        7822,
+        1479,
+        270,
+        14177,
+        294,
+        260,
+        5212,
+        18308,
+        4854,
+        477,
+        103675,
+        3881,
+        4990,
+        7845,
+        343,
+        71,
+        3588,
+        1042,
+        21845,
+        8095,
+        11,
+        295,
+        260,
+        44479,
+        10562,
+        16,
+        8829,
+        5291,
+        12927,
+        260,
+        90574,
+        25309,
+        294,
+        14177,
+        343,
+        67,
+        582,
+        47494,
+        5925,
+        305,
+        6579,
+        1353,
+        270,
+        4605,
+        1761,
+        59700,
+        14037,
+        304,
+        436,
+        1936,
+        14327,
+        2207,
+        706,
+        343,
+        19388,
+        2281,
+        11,
+        469,
+        59773,
+        343,
+        3555,
+        1625,
+        2281,
+        11,
+        304,
+        270,
+        18885,
+        5291,
+        339,
+        666,
+        9130,
+        3991,
+        1478,
+        11490,
+        2143,
+        671,
+        5026,
+        1499,
+        344,
+        14241,
+        1055,
+        4605,
+        1761,
+        59700,
+        16,
+        13548,
+        294,
+        11602,
+        362,
+        270,
+        5221,
+        26359,
+        304,
+        60567,
+        710,
+        13656,
+        343,
+        9808,
+        1114,
+        6559,
+        1473,
+        7845,
+        53042,
+        754,
+        4605,
+        1761,
+        59700,
+        477,
+        43350,
+        834,
+        1561,
+        2658,
+        16,
+        1162,
+        15170,
+        260,
+        19927
+      ],
+      "tokenTimesMs": [
+        9019.411874935031,
+        9227.889712899923,
+        9424.361645011231,
+        9614.439947996289,
+        9805.562512949109,
+        9998.145899968222,
+        10190.864134929143,
+        10380.320803960785,
+        10574.675749987364,
+        10766.833422938362,
+        10956.252763979137,
+        11146.301002940163,
+        11339.439288014546,
+        11530.886925989762,
+        11724.641100969166,
+        11911.409102962352,
+        12097.770957974717,
+        12285.465619992465,
+        12474.319950910285,
+        12662.897175992839,
+        12856.734119006433,
+        13047.967404010706,
+        13238.27537195757,
+        13432.344540953636,
+        13625.088519998826,
+        13812.870046007447,
+        14002.142954966985,
+        14191.547942929901,
+        14384.695139946416,
+        14576.00087299943,
+        14767.706143902615,
+        14959.091828903183,
+        15149.340117932297,
+        15337.41638099309,
+        15529.059538966976,
+        15715.703763999045,
+        15906.687398906797,
+        16098.219580948353,
+        16292.175533948466,
+        16479.116319911554,
+        16669.320320012048,
+        16859.39985490404,
+        17049.980352981947,
+        17238.530169939622,
+        17427.65630991198,
+        17614.662103937007,
+        17804.290085914545,
+        17993.794050998986,
+        18184.09547500778,
+        18376.592204906046,
+        18570.14895498287,
+        18761.226638918743,
+        18952.25211500656,
+        19148.99004693143,
+        19341.32471191697,
+        19532.71959698759,
+        19723.93433796242,
+        19912.819147924893,
+        20105.700919986703,
+        20297.12340491824,
+        20493.257397902198,
+        20683.454149984755,
+        20872.39489692729,
+        21066.08060793951,
+        21258.225688012317,
+        21450.173485907726,
+        21640.068076900207,
+        21830.135772936046,
+        22022.902727941982,
+        22213.23808899615,
+        22401.835217955522,
+        22593.48813595716,
+        22783.194309915416,
+        22972.70366596058,
+        23166.37153690681,
+        23359.102538903244,
+        23548.93471300602,
+        23740.06553296931,
+        23930.273133912124,
+        24120.127739966847,
+        24312.472516903654,
+        24502.89470993448,
+        24694.90425393451,
+        24887.38413597457,
+        25080.65205195453,
+        25273.322238004766,
+        25458.939833915792,
+        25652.123558917083,
+        25845.927397953346,
+        26033.96177093964,
+        26222.069426905364,
+        26411.714144982398,
+        26598.98249991238,
+        26790.62928899657,
+        26977.86038101185,
+        27166.316421004012,
+        27356.79947794415,
+        27543.294645962305,
+        27730.75212200638,
+        27917.072568903677,
+        28105.644273920916,
+        28296.845366014168,
+        28485.72143993806,
+        28673.55603701435,
+        28866.07510293834,
+        29055.24306592997,
+        29244.115539942868,
+        29432.641020976007,
+        29623.01421992015,
+        29810.7399699511,
+        29998.644648003392,
+        30189.876651973464,
+        30376.856077928096,
+        30564.749602926895,
+        30752.623289008625,
+        30941.736018983647,
+        31128.28137993347,
+        31321.22067094315,
+        31510.69882698357,
+        31697.471436928026,
+        31885.47329895664,
+        32075.734321959317,
+        32264.82582092285,
+        32452.91210000869,
+        32641.95426995866,
+        32831.285977968946,
+        33019.763730000705,
+        33208.89042899944
+      ],
+      "text": "**Pipeline Parallelism** is a model-parallelism strategy where the layers of a deep neural network are partitioned across multiple devices (e.g., GPUs) in a sequential chain. Each device holds a contiguous subset of layers (a \"stage\") and processes only the micro-batches assigned to it before passing activations (forward pass) or gradients (backward pass) to the adjacent device.\n\n**Mechanism:**  \nThe training data is split into micro-batches. Instead of waiting for the entire batch to traverse all stages (which would leave most devices idle), micro-batches are injected one after another. This creates a steady",
+      "metrics": {
+        "overallTps": 3.8543752046172557,
+        "decodeTps": 5.250216523524894,
+        "ttftMs": 9019.411874935031,
+        "elapsedMs": 33209.01396591216,
+        "decodeMs": 24189.478554064408,
+        "effectivePromptTps": 2.8826713271908635,
+        "itlMs": {
+          "mean": 190.4683350713733,
+          "median": 190.20400010049343,
+          "p95": 193.92025000415742,
+          "p99": 196.66877197334543,
+          "min": 185.617595911026,
+          "max": 208.4778379648924
+        }
+      },
+      "nativeTimings": {
+        "cache_n": 0,
+        "prompt_n": 26,
+        "prompt_ms": 9018.249,
+        "prompt_per_token_ms": 346.8557307692308,
+        "prompt_per_second": 2.883043038620912,
+        "predicted_n": 128,
+        "predicted_ms": 24189.457,
+        "predicted_per_token_ms": 190.4681653543307,
+        "predicted_per_second": 5.250221201740907
+      },
+      "request": {
+        "prompt": [
+          0,
+          128803,
+          21750,
+          260,
+          21886,
+          10021,
+          11394,
+          294,
+          28499,
+          120988,
+          14,
+          1009,
+          6258,
+          2753,
+          14,
+          305,
+          1009,
+          1840,
+          111127,
+          16,
+          42893,
+          3514,
+          5553,
+          16,
+          128804,
+          128822
+        ],
+        "n_predict": 128,
+        "temperature": 0,
+        "seed": 0,
+        "ignore_eos": false,
+        "cache_prompt": false,
+        "stream": true,
+        "return_tokens": true,
+        "timings_per_token": false,
+        "stop": [],
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "samplers": [
+          "temperature"
+        ],
+        "id_slot": 0
+      },
+      "final": {
+        "index": 0,
+        "content": "",
+        "tokens": [],
+        "id_slot": 0,
+        "stop": true,
+        "model": "ds4-flash-rpc-sweep",
+        "tokens_predicted": 128,
+        "tokens_evaluated": 26,
+        "generation_settings": {
+          "seed": 0,
+          "temperature": 0.0,
+          "dynatemp_range": 0.0,
+          "dynatemp_exponent": 1.0,
+          "top_k": 40,
+          "top_p": 1.0,
+          "min_p": 0.05000000074505806,
+          "top_n_sigma": -1.0,
+          "xtc_probability": 0.0,
+          "xtc_threshold": 0.10000000149011612,
+          "typical_p": 1.0,
+          "repeat_last_n": 64,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "frequency_penalty": 0.0,
+          "dry_multiplier": 0.0,
+          "dry_base": 1.75,
+          "dry_allowed_length": 2,
+          "dry_penalty_last_n": 64,
+          "dry_sequence_breakers": [
+            "\n",
+            ":",
+            "\"",
+            "*"
+          ],
+          "mirostat": 0,
+          "mirostat_tau": 5.0,
+          "mirostat_eta": 0.10000000149011612,
+          "adaptive_target": -1.0,
+          "adaptive_decay": 0.8999999761581421,
+          "stop": [],
+          "max_tokens": 128,
+          "n_predict": 128,
+          "n_keep": 0,
+          "n_discard": 0,
+          "ignore_eos": false,
+          "stream": true,
+          "logit_bias": [],
+          "n_probs": 0,
+          "min_keep": 0,
+          "grammar": "",
+          "grammar_lazy": false,
+          "grammar_triggers": [],
+          "preserved_tokens": [],
+          "chat_format": "Content-only",
+          "reasoning_format": "deepseek",
+          "reasoning_in_content": false,
+          "generation_prompt": "",
+          "samplers": [
+            "temperature"
+          ],
+          "speculative.types": "none",
+          "timings_per_token": false,
+          "post_sampling_probs": false,
+          "backend_sampling": false,
+          "lora": []
+        },
+        "prompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+        "has_new_line": true,
+        "truncated": false,
+        "stop_type": "limit",
+        "stopping_word": "",
+        "tokens_cached": 153,
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 26,
+          "prompt_ms": 9018.249,
+          "prompt_per_token_ms": 346.8557307692308,
+          "prompt_per_second": 2.883043038620912,
+          "predicted_n": 128,
+          "predicted_ms": 24189.457,
+          "predicted_per_token_ms": 190.4681653543307,
+          "predicted_per_second": 5.250221201740907
+        }
+      },
+      "networkBefore": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            100.18817405216396,
+            99.6135309105739,
+            99.38009106554091,
+            100.65455990843475,
+            100.08943697903305,
+            100.4524159943685,
+            99.87910103518516,
+            99.58551602903754,
+            99.44300202187151,
+            98.64407195709646,
+            99.83073198236525,
+            99.73234892822802
+          ],
+          "medianMs": 99.78154045529664,
+          "avgMs": 99.79108173865825,
+          "minMs": 98.64407195709646,
+          "maxMs": 100.65455990843475
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "networkAfter": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            99.79477990418673,
+            99.52284302562475,
+            100.34183808602393,
+            100.35706998314708,
+            100.38667102344334,
+            99.97871692758054,
+            100.1818209188059,
+            99.49140204116702,
+            99.46741897147149,
+            100.0342370243743,
+            100.89382505975664,
+            99.74609198980033
+          ],
+          "medianMs": 100.00647697597742,
+          "avgMs": 100.0163929129485,
+          "minMs": 99.46741897147149,
+          "maxMs": 100.89382505975664
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "jobId": "llama-2",
+      "tokenIds": [
+        666,
+        122492,
+        50294,
+        1478,
+        666,
+        344,
+        260,
+        2645,
+        44972,
+        9528,
+        1478,
+        7822,
+        1479,
+        270,
+        14177,
+        294,
+        260,
+        5212,
+        18308,
+        4854,
+        477,
+        103675,
+        3881,
+        4990,
+        7845,
+        343,
+        71,
+        3588,
+        1042,
+        21845,
+        8095,
+        11,
+        295,
+        260,
+        44479,
+        10562,
+        16,
+        8829,
+        5291,
+        12927,
+        260,
+        90574,
+        25309,
+        294,
+        14177,
+        343,
+        67,
+        582,
+        47494,
+        5925,
+        305,
+        6579,
+        1353,
+        270,
+        4605,
+        1761,
+        59700,
+        14037,
+        304,
+        436,
+        1936,
+        14327,
+        2207,
+        706,
+        343,
+        19388,
+        2281,
+        11,
+        469,
+        59773,
+        343,
+        3555,
+        1625,
+        2281,
+        11,
+        304,
+        270,
+        18885,
+        5291,
+        339,
+        666,
+        9130,
+        3991,
+        1478,
+        11490,
+        2143,
+        671,
+        5026,
+        1499,
+        344,
+        14241,
+        1055,
+        4605,
+        1761,
+        59700,
+        16,
+        13548,
+        294,
+        11602,
+        362,
+        270,
+        5221,
+        26359,
+        304,
+        60567,
+        710,
+        13656,
+        343,
+        9808,
+        1114,
+        6559,
+        1473,
+        7845,
+        53042,
+        754,
+        4605,
+        1761,
+        59700,
+        477,
+        43350,
+        834,
+        1561,
+        2658,
+        16,
+        1162,
+        15170,
+        260,
+        19927
+      ],
+      "tokenTimesMs": [
+        9050.95301894471,
+        9260.857437970117,
+        9464.796088053845,
+        9652.786734048277,
+        9848.969078972004,
+        10038.362113991752,
+        10233.615046949126,
+        10426.991875981912,
+        10622.303063981235,
+        10818.020959035493,
+        11016.67353801895,
+        11213.053963962011,
+        11410.187800996937,
+        11606.091280002147,
+        11798.966043046676,
+        11993.81374195218,
+        12190.680649015121,
+        12386.332271038555,
+        12581.496707978658,
+        12771.049038972706,
+        12956.693675019778,
+        13143.581515992992,
+        13341.33223502431,
+        13534.471782040782,
+        13725.265656015836,
+        13922.760967048816,
+        14116.784197976813,
+        14315.066998940893,
+        14506.756220944226,
+        14705.44507203158,
+        14893.271235981956,
+        15085.53543605376,
+        15280.097373994067,
+        15474.31834996678,
+        15668.984367977828,
+        15860.0198100321,
+        16047.014915035106,
+        16236.754495999776,
+        16434.202622971497,
+        16627.281754044816,
+        16816.628405009396,
+        17008.31330602523,
+        17200.44288097415,
+        17392.978169955313,
+        17586.70370397158,
+        17783.457170939073,
+        17977.81281999778,
+        18173.81965997629,
+        18369.30072098039,
+        18564.517028979026,
+        18757.1999829961,
+        18948.959092027508,
+        19141.26265095547,
+        19336.485296022147,
+        19527.50006702263,
+        19721.33827302605,
+        19911.827935953625,
+        20102.123711956665,
+        20292.432702961378,
+        20487.289441982284,
+        20680.91172701679,
+        20871.029515983537,
+        21069.090974051505,
+        21263.460397953168,
+        21451.290083001368,
+        21643.9887000015,
+        21838.264220044948,
+        22028.172777965665,
+        22216.33294399362,
+        22402.335196034983,
+        22594.564851024188,
+        22784.688225015998,
+        22981.926606036723,
+        23175.343881943263,
+        23363.364688004367,
+        23553.843855974264,
+        23744.12449495867,
+        23937.05184897408,
+        24131.680186023004,
+        24327.000910998322,
+        24522.266739048064,
+        24717.782265041023,
+        24915.46141600702,
+        25110.46738596633,
+        25307.206036988646,
+        25505.95111201983,
+        25698.4976970125,
+        25890.501735033467,
+        26090.75264004059,
+        26284.888094989583,
+        26481.79665103089,
+        26672.050026012585,
+        26867.886623949744,
+        27060.8880269574,
+        27257.173427031375,
+        27454.113646992482,
+        27648.478638962843,
+        27837.933082017116,
+        28031.771527952515,
+        28224.989379988983,
+        28419.098722049966,
+        28613.089906051755,
+        28807.482530013658,
+        28998.36593994405,
+        29192.72043602541,
+        29385.799822048284,
+        29577.402833965607,
+        29775.242386036552,
+        29971.747371018864,
+        30167.884130962193,
+        30362.7225010423,
+        30554.725931957364,
+        30744.253015029244,
+        30940.307533019222,
+        31132.456292049028,
+        31319.276997004636,
+        31517.30203605257,
+        31709.76780494675,
+        31898.692709975876,
+        32096.13990597427,
+        32292.59289102629,
+        32491.496174945496,
+        32684.26669598557,
+        32871.43040995579,
+        33062.31690698769,
+        33258.18318594247,
+        33454.50197800528,
+        33652.011767961085
+      ],
+      "text": "**Pipeline Parallelism** is a model-parallelism strategy where the layers of a deep neural network are partitioned across multiple devices (e.g., GPUs) in a sequential chain. Each device holds a contiguous subset of layers (a \"stage\") and processes only the micro-batches assigned to it before passing activations (forward pass) or gradients (backward pass) to the adjacent device.\n\n**Mechanism:**  \nThe training data is split into micro-batches. Instead of waiting for the entire batch to traverse all stages (which would leave most devices idle), micro-batches are injected one after another. This creates a steady",
+      "metrics": {
+        "overallTps": 3.8036148367072475,
+        "decodeTps": 5.16237944454638,
+        "ttftMs": 9050.95301894471,
+        "elapsedMs": 33652.19810500275,
+        "decodeMs": 24601.058749016374,
+        "effectivePromptTps": 2.8726256721893195,
+        "itlMs": {
+          "mean": 193.70912400800296,
+          "median": 194.02323092799634,
+          "p95": 198.54164557764307,
+          "p99": 202.97983636381102,
+          "min": 185.6446360470727,
+          "max": 209.90441902540624
+        }
+      },
+      "nativeTimings": {
+        "cache_n": 0,
+        "prompt_n": 26,
+        "prompt_ms": 9049.844,
+        "prompt_per_token_ms": 348.07092307692307,
+        "prompt_per_second": 2.8729776999470933,
+        "predicted_n": 128,
+        "predicted_ms": 24601.027,
+        "predicted_per_token_ms": 193.70887401574802,
+        "predicted_per_second": 5.1623861068889525
+      },
+      "request": {
+        "prompt": [
+          0,
+          128803,
+          21750,
+          260,
+          21886,
+          10021,
+          11394,
+          294,
+          28499,
+          120988,
+          14,
+          1009,
+          6258,
+          2753,
+          14,
+          305,
+          1009,
+          1840,
+          111127,
+          16,
+          42893,
+          3514,
+          5553,
+          16,
+          128804,
+          128822
+        ],
+        "n_predict": 128,
+        "temperature": 0,
+        "seed": 0,
+        "ignore_eos": false,
+        "cache_prompt": false,
+        "stream": true,
+        "return_tokens": true,
+        "timings_per_token": false,
+        "stop": [],
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "samplers": [
+          "temperature"
+        ],
+        "id_slot": 0
+      },
+      "final": {
+        "index": 0,
+        "content": "",
+        "tokens": [],
+        "id_slot": 0,
+        "stop": true,
+        "model": "ds4-flash-rpc-sweep",
+        "tokens_predicted": 128,
+        "tokens_evaluated": 26,
+        "generation_settings": {
+          "seed": 0,
+          "temperature": 0.0,
+          "dynatemp_range": 0.0,
+          "dynatemp_exponent": 1.0,
+          "top_k": 40,
+          "top_p": 1.0,
+          "min_p": 0.05000000074505806,
+          "top_n_sigma": -1.0,
+          "xtc_probability": 0.0,
+          "xtc_threshold": 0.10000000149011612,
+          "typical_p": 1.0,
+          "repeat_last_n": 64,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "frequency_penalty": 0.0,
+          "dry_multiplier": 0.0,
+          "dry_base": 1.75,
+          "dry_allowed_length": 2,
+          "dry_penalty_last_n": 64,
+          "dry_sequence_breakers": [
+            "\n",
+            ":",
+            "\"",
+            "*"
+          ],
+          "mirostat": 0,
+          "mirostat_tau": 5.0,
+          "mirostat_eta": 0.10000000149011612,
+          "adaptive_target": -1.0,
+          "adaptive_decay": 0.8999999761581421,
+          "stop": [],
+          "max_tokens": 128,
+          "n_predict": 128,
+          "n_keep": 0,
+          "n_discard": 0,
+          "ignore_eos": false,
+          "stream": true,
+          "logit_bias": [],
+          "n_probs": 0,
+          "min_keep": 0,
+          "grammar": "",
+          "grammar_lazy": false,
+          "grammar_triggers": [],
+          "preserved_tokens": [],
+          "chat_format": "Content-only",
+          "reasoning_format": "deepseek",
+          "reasoning_in_content": false,
+          "generation_prompt": "",
+          "samplers": [
+            "temperature"
+          ],
+          "speculative.types": "none",
+          "timings_per_token": false,
+          "post_sampling_probs": false,
+          "backend_sampling": false,
+          "lora": []
+        },
+        "prompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+        "has_new_line": true,
+        "truncated": false,
+        "stop_type": "limit",
+        "stopping_word": "",
+        "tokens_cached": 153,
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 26,
+          "prompt_ms": 9049.844,
+          "prompt_per_token_ms": 348.07092307692307,
+          "prompt_per_second": 2.8729776999470933,
+          "predicted_n": 128,
+          "predicted_ms": 24601.027,
+          "predicted_per_token_ms": 193.70887401574802,
+          "predicted_per_second": 5.1623861068889525
+        }
+      },
+      "networkBefore": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            100.05636501591653,
+            100.34537396859378,
+            100.36209400277585,
+            99.61130702868104,
+            100.05790193099529,
+            98.99003989994526,
+            100.35258997231722,
+            100.2078860765323,
+            99.40300206653774,
+            99.47855304926634,
+            100.03927804064006,
+            99.75754795596004
+          ],
+          "medianMs": 100.04782152827829,
+          "avgMs": 99.88849491734679,
+          "minMs": 98.99003989994526,
+          "maxMs": 100.36209400277585
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "networkAfter": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            99.0522790234536,
+            99.62570702191442,
+            99.50940194539726,
+            100.26162909343839,
+            99.59868306759745,
+            100.56036605965346,
+            100.01311602536589,
+            100.01529206056148,
+            100.53617507219315,
+            99.69151497352868,
+            100.15209298580885,
+            100.1214359421283
+          ],
+          "medianMs": 100.01420404296368,
+          "avgMs": 99.92814110592008,
+          "minMs": 99.0522790234536,
+          "maxMs": 100.56036605965346
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "jobId": "llama-3",
+      "tokenIds": [
+        666,
+        122492,
+        50294,
+        1478,
+        666,
+        344,
+        260,
+        2645,
+        44972,
+        9528,
+        1478,
+        7822,
+        1479,
+        270,
+        14177,
+        294,
+        260,
+        5212,
+        18308,
+        4854,
+        477,
+        103675,
+        3881,
+        4990,
+        7845,
+        343,
+        71,
+        3588,
+        1042,
+        21845,
+        8095,
+        11,
+        295,
+        260,
+        44479,
+        10562,
+        16,
+        8829,
+        5291,
+        12927,
+        260,
+        90574,
+        25309,
+        294,
+        14177,
+        343,
+        67,
+        582,
+        47494,
+        5925,
+        305,
+        6579,
+        1353,
+        270,
+        4605,
+        1761,
+        59700,
+        14037,
+        304,
+        436,
+        1936,
+        14327,
+        2207,
+        706,
+        343,
+        19388,
+        2281,
+        11,
+        469,
+        59773,
+        343,
+        3555,
+        1625,
+        2281,
+        11,
+        304,
+        270,
+        18885,
+        5291,
+        339,
+        666,
+        9130,
+        3991,
+        1478,
+        11490,
+        2143,
+        671,
+        5026,
+        1499,
+        344,
+        14241,
+        1055,
+        4605,
+        1761,
+        59700,
+        16,
+        13548,
+        294,
+        11602,
+        362,
+        270,
+        5221,
+        26359,
+        304,
+        60567,
+        710,
+        13656,
+        343,
+        9808,
+        1114,
+        6559,
+        1473,
+        7845,
+        53042,
+        754,
+        4605,
+        1761,
+        59700,
+        477,
+        43350,
+        834,
+        1561,
+        2658,
+        16,
+        1162,
+        15170,
+        260,
+        19927
+      ],
+      "tokenTimesMs": [
+        9070.641158963554,
+        9278.19942298811,
+        9479.187898919918,
+        9673.030823934823,
+        9867.113927030005,
+        10066.400139941834,
+        10259.822599007748,
+        10453.298851964064,
+        10648.70461600367,
+        10847.133624949493,
+        11039.861504919827,
+        11231.73888598103,
+        11424.121644929983,
+        11617.451224010438,
+        11810.51102699712,
+        12005.698597989976,
+        12198.677502921782,
+        12398.313684971072,
+        12587.653374997899,
+        12781.233291025274,
+        12977.010944974609,
+        13170.70529400371,
+        13363.68869501166,
+        13561.007363954559,
+        13757.219403982162,
+        13951.14996097982,
+        14143.376032006927,
+        14335.281749023125,
+        14530.33909399528,
+        14715.420141932555,
+        14909.614876960404,
+        15101.788243977353,
+        15293.4907899471,
+        15487.405300955288,
+        15683.243514969945,
+        15873.772825929336,
+        16062.461072928272,
+        16257.09124992136,
+        16445.933224982582,
+        16638.11967894435,
+        16833.08729797136,
+        17025.38647199981,
+        17218.828371958807,
+        17411.117882002145,
+        17601.194006972946,
+        17802.992134005763,
+        17997.250036918558,
+        18191.164721967652,
+        18383.161462959833,
+        18572.376449010335,
+        18764.967815950513,
+        18956.694587948732,
+        19146.630488918163,
+        19336.199107929133,
+        19522.04366296064,
+        19716.438604984432,
+        19908.62878796179,
+        20101.811022032052,
+        20297.57579602301,
+        20484.056673012674,
+        20683.182340930216,
+        20872.702367021702,
+        21072.987735969946,
+        21271.30954398308,
+        21468.952997005545,
+        21659.2840179801,
+        21848.04776997771,
+        22043.059595976956,
+        22233.502506976947,
+        22428.673150017858,
+        22621.916056028567,
+        22817.12794699706,
+        23011.387401027605,
+        23200.715811923146,
+        23394.57758399658,
+        23581.089293933474,
+        23772.749345982447,
+        23970.23234993685,
+        24164.021866978146,
+        24360.29509094078,
+        24558.620946947485,
+        24755.003898986615,
+        24945.184631971642,
+        25142.387763014995,
+        25339.921840000898,
+        25531.605427968316,
+        25720.565196010284,
+        25911.84615797829,
+        26099.479440017603,
+        26295.431445003487,
+        26487.39836399909,
+        26675.96107395366,
+        26866.78768193815,
+        27062.577094999142,
+        27253.465031972155,
+        27442.479567951523,
+        27632.599884993397,
+        27828.749876003712,
+        28022.79646496754,
+        28217.699714936316,
+        28412.02729800716,
+        28604.245080030523,
+        28797.600129968487,
+        28989.29296596907,
+        29178.616479970515,
+        29372.907534008846,
+        29564.76105900947,
+        29760.45045501087,
+        29951.92911394406,
+        30142.161158961244,
+        30337.753787986003,
+        30532.078201998957,
+        30720.826657954603,
+        30909.32159195654,
+        31106.686579994857,
+        31304.071870981716,
+        31500.173781998456,
+        31690.104817971587,
+        31882.709144963883,
+        32083.808148978278,
+        32279.05488794204,
+        32470.396409975365,
+        32668.781321961433,
+        32862.65670997091,
+        33058.395306929015,
+        33243.50939493161,
+        33433.31756594125,
+        33622.35808593687
+      ],
+      "text": "**Pipeline Parallelism** is a model-parallelism strategy where the layers of a deep neural network are partitioned across multiple devices (e.g., GPUs) in a sequential chain. Each device holds a contiguous subset of layers (a \"stage\") and processes only the micro-batches assigned to it before passing activations (forward pass) or gradients (backward pass) to the adjacent device.\n\n**Mechanism:**  \nThe training data is split into micro-batches. Instead of waiting for the entire batch to traverse all stages (which would leave most devices idle), micro-batches are injected one after another. This creates a steady",
+      "metrics": {
+        "overallTps": 3.80697110226654,
+        "decodeTps": 5.172754328251222,
+        "ttftMs": 9070.641158963554,
+        "elapsedMs": 33622.52997502219,
+        "decodeMs": 24551.716926973313,
+        "effectivePromptTps": 2.86639053892094,
+        "itlMs": {
+          "mean": 193.3206057241993,
+          "median": 193.35504993796349,
+          "p95": 199.2380494135432,
+          "p99": 201.6163550480269,
+          "min": 185.08104793727398,
+          "max": 207.55826402455568
+        }
+      },
+      "nativeTimings": {
+        "cache_n": 0,
+        "prompt_n": 26,
+        "prompt_ms": 9068.866,
+        "prompt_per_token_ms": 348.80253846153846,
+        "prompt_per_second": 2.8669516122522927,
+        "predicted_n": 128,
+        "predicted_ms": 24551.957,
+        "predicted_per_token_ms": 193.32249606299212,
+        "predicted_per_second": 5.172703748218523
+      },
+      "request": {
+        "prompt": [
+          0,
+          128803,
+          21750,
+          260,
+          21886,
+          10021,
+          11394,
+          294,
+          28499,
+          120988,
+          14,
+          1009,
+          6258,
+          2753,
+          14,
+          305,
+          1009,
+          1840,
+          111127,
+          16,
+          42893,
+          3514,
+          5553,
+          16,
+          128804,
+          128822
+        ],
+        "n_predict": 128,
+        "temperature": 0,
+        "seed": 0,
+        "ignore_eos": false,
+        "cache_prompt": false,
+        "stream": true,
+        "return_tokens": true,
+        "timings_per_token": false,
+        "stop": [],
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "samplers": [
+          "temperature"
+        ],
+        "id_slot": 0
+      },
+      "final": {
+        "index": 0,
+        "content": "",
+        "tokens": [],
+        "id_slot": 0,
+        "stop": true,
+        "model": "ds4-flash-rpc-sweep",
+        "tokens_predicted": 128,
+        "tokens_evaluated": 26,
+        "generation_settings": {
+          "seed": 0,
+          "temperature": 0.0,
+          "dynatemp_range": 0.0,
+          "dynatemp_exponent": 1.0,
+          "top_k": 40,
+          "top_p": 1.0,
+          "min_p": 0.05000000074505806,
+          "top_n_sigma": -1.0,
+          "xtc_probability": 0.0,
+          "xtc_threshold": 0.10000000149011612,
+          "typical_p": 1.0,
+          "repeat_last_n": 64,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "frequency_penalty": 0.0,
+          "dry_multiplier": 0.0,
+          "dry_base": 1.75,
+          "dry_allowed_length": 2,
+          "dry_penalty_last_n": 64,
+          "dry_sequence_breakers": [
+            "\n",
+            ":",
+            "\"",
+            "*"
+          ],
+          "mirostat": 0,
+          "mirostat_tau": 5.0,
+          "mirostat_eta": 0.10000000149011612,
+          "adaptive_target": -1.0,
+          "adaptive_decay": 0.8999999761581421,
+          "stop": [],
+          "max_tokens": 128,
+          "n_predict": 128,
+          "n_keep": 0,
+          "n_discard": 0,
+          "ignore_eos": false,
+          "stream": true,
+          "logit_bias": [],
+          "n_probs": 0,
+          "min_keep": 0,
+          "grammar": "",
+          "grammar_lazy": false,
+          "grammar_triggers": [],
+          "preserved_tokens": [],
+          "chat_format": "Content-only",
+          "reasoning_format": "deepseek",
+          "reasoning_in_content": false,
+          "generation_prompt": "",
+          "samplers": [
+            "temperature"
+          ],
+          "speculative.types": "none",
+          "timings_per_token": false,
+          "post_sampling_probs": false,
+          "backend_sampling": false,
+          "lora": []
+        },
+        "prompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+        "has_new_line": true,
+        "truncated": false,
+        "stop_type": "limit",
+        "stopping_word": "",
+        "tokens_cached": 153,
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 26,
+          "prompt_ms": 9068.866,
+          "prompt_per_token_ms": 348.80253846153846,
+          "prompt_per_second": 2.8669516122522927,
+          "predicted_n": 128,
+          "predicted_ms": 24551.957,
+          "predicted_per_token_ms": 193.32249606299212,
+          "predicted_per_second": 5.172703748218523
+        }
+      },
+      "networkBefore": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            100.28710099868476,
+            100.42108595371246,
+            99.91142002400011,
+            99.2953690001741,
+            98.44893298577517,
+            99.8885870212689,
+            99.86111603211612,
+            100.16169294249266,
+            99.72353093326092,
+            100.17786908429116,
+            100.22407595533878,
+            98.89434394426644
+          ],
+          "medianMs": 99.9000035226345,
+          "avgMs": 99.77459373961513,
+          "minMs": 98.44893298577517,
+          "maxMs": 100.42108595371246
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "networkAfter": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            99.40994495991617,
+            99.32501602452248,
+            98.94371905829757,
+            99.17743201367557,
+            99.86303409095854,
+            99.627819028683,
+            100.2462370088324,
+            99.99839495867491,
+            99.58861896302551,
+            99.63978501036763,
+            99.88485905341804,
+            99.01016799267381
+          ],
+          "medianMs": 99.60821899585426,
+          "avgMs": 99.5595856802538,
+          "minMs": 98.94371905829757,
+          "maxMs": 100.2462370088324
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "jobId": "llama-4",
+      "tokenIds": [
+        666,
+        122492,
+        50294,
+        1478,
+        666,
+        344,
+        260,
+        2645,
+        44972,
+        9528,
+        1478,
+        7822,
+        1479,
+        270,
+        14177,
+        294,
+        260,
+        5212,
+        18308,
+        4854,
+        477,
+        103675,
+        3881,
+        4990,
+        7845,
+        343,
+        71,
+        3588,
+        1042,
+        21845,
+        8095,
+        11,
+        295,
+        260,
+        44479,
+        10562,
+        16,
+        8829,
+        5291,
+        12927,
+        260,
+        90574,
+        25309,
+        294,
+        14177,
+        343,
+        67,
+        582,
+        47494,
+        5925,
+        305,
+        6579,
+        1353,
+        270,
+        4605,
+        1761,
+        59700,
+        14037,
+        304,
+        436,
+        1936,
+        14327,
+        2207,
+        706,
+        343,
+        19388,
+        2281,
+        11,
+        469,
+        59773,
+        343,
+        3555,
+        1625,
+        2281,
+        11,
+        304,
+        270,
+        18885,
+        5291,
+        339,
+        666,
+        9130,
+        3991,
+        1478,
+        11490,
+        2143,
+        671,
+        5026,
+        1499,
+        344,
+        14241,
+        1055,
+        4605,
+        1761,
+        59700,
+        16,
+        13548,
+        294,
+        11602,
+        362,
+        270,
+        5221,
+        26359,
+        304,
+        60567,
+        710,
+        13656,
+        343,
+        9808,
+        1114,
+        6559,
+        1473,
+        7845,
+        53042,
+        754,
+        4605,
+        1761,
+        59700,
+        477,
+        43350,
+        834,
+        1561,
+        2658,
+        16,
+        1162,
+        15170,
+        260,
+        19927
+      ],
+      "tokenTimesMs": [
+        9046.5737960767,
+        9258.482205099426,
+        9459.784889011644,
+        9656.048528035171,
+        9855.133938021027,
+        10049.33539207559,
+        10241.805958095938,
+        10434.399293037131,
+        10629.567710100673,
+        10822.573096025735,
+        11012.649908079766,
+        11205.507164006121,
+        11398.710548994131,
+        11597.94749703724,
+        11791.296354029328,
+        11989.685202017426,
+        12185.560327023268,
+        12379.008545074612,
+        12570.054577081464,
+        12762.039813096635,
+        12955.02450899221,
+        13150.284433038905,
+        13346.271782065742,
+        13537.757287034765,
+        13732.699800049886,
+        13931.374745094217,
+        14122.618394088931,
+        14319.529058993794,
+        14512.879117042758,
+        14706.55343204271,
+        14903.034383081831,
+        15094.595057074912,
+        15289.089088095352,
+        15488.169762073085,
+        15680.469607003033,
+        15876.193708041683,
+        16069.317220011726,
+        16263.61685001757,
+        16456.815019017085,
+        16650.055716047063,
+        16837.412981083617,
+        17032.897080061957,
+        17233.237632084638,
+        17430.376442032866,
+        17624.55533607863,
+        17819.73965698853,
+        18017.95371901244,
+        18213.13042601105,
+        18411.16984805558,
+        18610.337114077993,
+        18807.13547510095,
+        18998.700132011436,
+        19197.461382020265,
+        19394.975712988526,
+        19593.339488026686,
+        19785.103299072944,
+        19977.79617109336,
+        20173.749151988886,
+        20367.955708992667,
+        20564.71013301052,
+        20763.978088041767,
+        20963.020713999867,
+        21161.57001000829,
+        21356.741531053558,
+        21554.543960024603,
+        21748.351330985315,
+        21945.088812033646,
+        22142.4385990249,
+        22334.405035013333,
+        22532.04032604117,
+        22729.059008066542,
+        22923.71121502947,
+        23118.034364073537,
+        23318.52870900184,
+        23514.765131054446,
+        23707.802259013988,
+        23902.98450004775,
+        24097.430626046844,
+        24297.740362002514,
+        24495.3743100632,
+        24689.79966803454,
+        24882.014553062618,
+        25072.217844077386,
+        25267.240997054614,
+        25461.367218056694,
+        25656.331586069427,
+        25846.52367804665,
+        26035.599781083874,
+        26225.165039068088,
+        26414.404598996043,
+        26603.58487907797,
+        26793.660506024025,
+        26980.553304078057,
+        27173.021102091298,
+        27369.622293044813,
+        27563.092158990912,
+        27753.065882017836,
+        27948.26756301336,
+        28143.196604098193,
+        28338.878863025457,
+        28527.656357036904,
+        28720.99305409938,
+        28915.886334027164,
+        29107.27908706758,
+        29303.984119091183,
+        29497.15318402741,
+        29693.865656037815,
+        29887.57217908278,
+        30086.339988047257,
+        30280.46089608688,
+        30475.324128055945,
+        30666.117471060716,
+        30860.01202603802,
+        31055.304908077233,
+        31251.04780809488,
+        31447.18117301818,
+        31642.35079009086,
+        31834.199576987885,
+        32033.729004091583,
+        32225.181566085666,
+        32421.09950608574,
+        32615.68716808688,
+        32808.15923807677,
+        32999.26118901931,
+        33190.66575099714,
+        33387.71204801742,
+        33582.23646203987,
+        33776.26324200537
+      ],
+      "text": "**Pipeline Parallelism** is a model-parallelism strategy where the layers of a deep neural network are partitioned across multiple devices (e.g., GPUs) in a sequential chain. Each device holds a contiguous subset of layers (a \"stage\") and processes only the micro-batches assigned to it before passing activations (forward pass) or gradients (backward pass) to the adjacent device.\n\n**Mechanism:**  \nThe training data is split into micro-batches. Instead of waiting for the entire batch to traverse all stages (which would leave most devices idle), micro-batches are injected one after another. This creates a steady",
+      "metrics": {
+        "overallTps": 3.789630026354366,
+        "decodeTps": 5.13552749126449,
+        "ttftMs": 9046.5737960767,
+        "elapsedMs": 33776.384267024696,
+        "decodeMs": 24729.68944592867,
+        "effectivePromptTps": 2.8740162393054955,
+        "itlMs": {
+          "mean": 194.72196414117064,
+          "median": 194.58766200114042,
+          "p95": 199.25865293480456,
+          "p99": 201.09251577639952,
+          "min": 186.89279805403203,
+          "max": 211.90840902272612
+        }
+      },
+      "nativeTimings": {
+        "cache_n": 0,
+        "prompt_n": 26,
+        "prompt_ms": 9045.19,
+        "prompt_per_token_ms": 347.8919230769231,
+        "prompt_per_second": 2.8744559262989497,
+        "predicted_n": 128,
+        "predicted_ms": 24729.892,
+        "predicted_per_token_ms": 194.7235590551181,
+        "predicted_per_second": 5.135485427918569
+      },
+      "request": {
+        "prompt": [
+          0,
+          128803,
+          21750,
+          260,
+          21886,
+          10021,
+          11394,
+          294,
+          28499,
+          120988,
+          14,
+          1009,
+          6258,
+          2753,
+          14,
+          305,
+          1009,
+          1840,
+          111127,
+          16,
+          42893,
+          3514,
+          5553,
+          16,
+          128804,
+          128822
+        ],
+        "n_predict": 128,
+        "temperature": 0,
+        "seed": 0,
+        "ignore_eos": false,
+        "cache_prompt": false,
+        "stream": true,
+        "return_tokens": true,
+        "timings_per_token": false,
+        "stop": [],
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "samplers": [
+          "temperature"
+        ],
+        "id_slot": 0
+      },
+      "final": {
+        "index": 0,
+        "content": "",
+        "tokens": [],
+        "id_slot": 0,
+        "stop": true,
+        "model": "ds4-flash-rpc-sweep",
+        "tokens_predicted": 128,
+        "tokens_evaluated": 26,
+        "generation_settings": {
+          "seed": 0,
+          "temperature": 0.0,
+          "dynatemp_range": 0.0,
+          "dynatemp_exponent": 1.0,
+          "top_k": 40,
+          "top_p": 1.0,
+          "min_p": 0.05000000074505806,
+          "top_n_sigma": -1.0,
+          "xtc_probability": 0.0,
+          "xtc_threshold": 0.10000000149011612,
+          "typical_p": 1.0,
+          "repeat_last_n": 64,
+          "repeat_penalty": 1.0,
+          "presence_penalty": 0.0,
+          "frequency_penalty": 0.0,
+          "dry_multiplier": 0.0,
+          "dry_base": 1.75,
+          "dry_allowed_length": 2,
+          "dry_penalty_last_n": 64,
+          "dry_sequence_breakers": [
+            "\n",
+            ":",
+            "\"",
+            "*"
+          ],
+          "mirostat": 0,
+          "mirostat_tau": 5.0,
+          "mirostat_eta": 0.10000000149011612,
+          "adaptive_target": -1.0,
+          "adaptive_decay": 0.8999999761581421,
+          "stop": [],
+          "max_tokens": 128,
+          "n_predict": 128,
+          "n_keep": 0,
+          "n_discard": 0,
+          "ignore_eos": false,
+          "stream": true,
+          "logit_bias": [],
+          "n_probs": 0,
+          "min_keep": 0,
+          "grammar": "",
+          "grammar_lazy": false,
+          "grammar_triggers": [],
+          "preserved_tokens": [],
+          "chat_format": "Content-only",
+          "reasoning_format": "deepseek",
+          "reasoning_in_content": false,
+          "generation_prompt": "",
+          "samplers": [
+            "temperature"
+          ],
+          "speculative.types": "none",
+          "timings_per_token": false,
+          "post_sampling_probs": false,
+          "backend_sampling": false,
+          "lora": []
+        },
+        "prompt": "<\uff5cbegin\u2581of\u2581sentence\uff5c><\uff5cUser\uff5c>Write a compact technical explanation of pipeline parallelism, its communication cost, and its main bottleneck. Continue until complete.<\uff5cAssistant\uff5c></think>",
+        "has_new_line": true,
+        "truncated": false,
+        "stop_type": "limit",
+        "stopping_word": "",
+        "tokens_cached": 153,
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 26,
+          "prompt_ms": 9045.19,
+          "prompt_per_token_ms": 347.8919230769231,
+          "prompt_per_second": 2.8744559262989497,
+          "predicted_n": 128,
+          "predicted_ms": 24729.892,
+          "predicted_per_token_ms": 194.7235590551181,
+          "predicted_per_second": 5.135485427918569
+        }
+      },
+      "networkBefore": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            100.19911709241569,
+            100.39708495605737,
+            100.23494006600231,
+            100.14690796379,
+            99.9380269786343,
+            99.74980202969164,
+            100.08644498884678,
+            100.28319607954472,
+            99.82129104901105,
+            99.43970397580415,
+            99.44056894164532,
+            100.17533996142447
+          ],
+          "medianMs": 100.11667647631839,
+          "avgMs": 99.99270200690565,
+          "minMs": 99.43970397580415,
+          "maxMs": 100.39708495605737
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      },
+      "networkAfter": {
+        "targetMs": 100,
+        "observed": {
+          "samplesMs": [
+            99.95101799722761,
+            100.1248910324648,
+            100.01196397934109,
+            100.21495504770428,
+            100.28426896315068,
+            99.84191390685737,
+            99.94489001110196,
+            100.18957906868309,
+            100.26977304369211,
+            99.951675045304,
+            100.09788302704692,
+            99.73205800633878
+          ],
+          "medianMs": 100.054923503194,
+          "avgMs": 100.05123909407605,
+          "minMs": 99.73205800633878,
+          "maxMs": 100.28426896315068
+        },
+        "proxies": [
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-forward",
+            "listen": "127.0.0.1:29621",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-return",
+            "listen": "127.0.0.1:29622",
+            "upstream": "192.168.10.154:29610",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-echo",
+            "listen": "127.0.0.1:29623",
+            "upstream": "192.168.10.154:29630",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          },
+          {
+            "name": "wanferenz-sweep-20260910T005901Z-rpc",
+            "listen": "127.0.0.1:29624",
+            "upstream": "192.168.10.154:50052",
+            "enabled": true,
+            "Logger": {},
+            "toxics": [
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "upstream",
+                "type": "latency",
+                "stream": "upstream",
+                "toxicity": 1
+              },
+              {
+                "attributes": {
+                  "latency": 48,
+                  "jitter": 0
+                },
+                "name": "downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rejectedJobs": [],
+  "before": {
+    "remote": "192.168.10.154",
+    "interface": "enP7s7",
+    "localHost": {
+      "command": [
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx1\n",
+      "stderr": ""
+    },
+    "remoteHost": {
+      "command": [
+        "ssh",
+        "-F",
+        "/dev/null",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=10.100.176.2",
+        "-o",
+        "ConnectTimeout=10",
+        "-i",
+        "/home/martin/.ssh/id_ed25519",
+        "martin@192.168.10.154",
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx2\n",
+      "stderr": ""
+    },
+    "rtt": {
+      "avgMs": 99.59838050417602,
+      "lossPercent": 0
+    },
+    "proxyProbe": {
+      "targetMs": 100,
+      "observed": {
+        "samplesMs": [
+          99.66639801859856,
+          99.74553296342492,
+          99.64713198132813,
+          99.08826695755124,
+          99.10089103505015,
+          99.36220292001963,
+          99.45098706521094,
+          99.0558658959344,
+          99.89118098746985,
+          99.65241292957217,
+          99.79124495293945,
+          99.54962902702391
+        ],
+        "medianMs": 99.59838050417602,
+        "avgMs": 99.50014539451028,
+        "minMs": 99.0558658959344,
+        "maxMs": 99.89118098746985
+      },
+      "proxies": [
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-forward",
+          "listen": "127.0.0.1:29621",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-return",
+          "listen": "127.0.0.1:29622",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-echo",
+          "listen": "127.0.0.1:29623",
+          "upstream": "192.168.10.154:29630",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-rpc",
+          "listen": "127.0.0.1:29624",
+          "upstream": "192.168.10.154:50052",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "after": {
+    "remote": "192.168.10.154",
+    "interface": "enP7s7",
+    "localHost": {
+      "command": [
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx1\n",
+      "stderr": ""
+    },
+    "remoteHost": {
+      "command": [
+        "ssh",
+        "-F",
+        "/dev/null",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "HostKeyAlias=10.100.176.2",
+        "-o",
+        "ConnectTimeout=10",
+        "-i",
+        "/home/martin/.ssh/id_ed25519",
+        "martin@192.168.10.154",
+        "hostname"
+      ],
+      "returncode": 0,
+      "stdout": "dgx2\n",
+      "stderr": ""
+    },
+    "rtt": {
+      "avgMs": 100.054923503194,
+      "lossPercent": 0
+    },
+    "proxyProbe": {
+      "targetMs": 100,
+      "observed": {
+        "samplesMs": [
+          99.95101799722761,
+          100.1248910324648,
+          100.01196397934109,
+          100.21495504770428,
+          100.28426896315068,
+          99.84191390685737,
+          99.94489001110196,
+          100.18957906868309,
+          100.26977304369211,
+          99.951675045304,
+          100.09788302704692,
+          99.73205800633878
+        ],
+        "medianMs": 100.054923503194,
+        "avgMs": 100.05123909407605,
+        "minMs": 99.73205800633878,
+        "maxMs": 100.28426896315068
+      },
+      "proxies": [
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-forward",
+          "listen": "127.0.0.1:29621",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-return",
+          "listen": "127.0.0.1:29622",
+          "upstream": "192.168.10.154:29610",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-echo",
+          "listen": "127.0.0.1:29623",
+          "upstream": "192.168.10.154:29630",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        },
+        {
+          "name": "wanferenz-sweep-20260910T005901Z-rpc",
+          "listen": "127.0.0.1:29624",
+          "upstream": "192.168.10.154:50052",
+          "enabled": true,
+          "Logger": {},
+          "toxics": [
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "upstream",
+              "type": "latency",
+              "stream": "upstream",
+              "toxicity": 1
+            },
+            {
+              "attributes": {
+                "latency": 48,
+                "jitter": 0
+              },
+              "name": "downstream",
+              "type": "latency",
+              "stream": "downstream",
+              "toxicity": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

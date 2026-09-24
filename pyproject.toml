@@ -1,0 +1,27 @@
+[project]
+name = "wanferenz"
+version = "0.1.0"
+description = "WANferenz: DeepSeek-V4-Flash inference over a chain of machines"
+requires-python = ">=3.11"
+dependencies = ["cryptography>=42", "numpy>=1.26", "torch>=2.11,<2.12", "safetensors>=0.6", "transformers>=4.50", "tqdm>=4.65", "regex"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+wanferenz = "wanferenz.serving.chain:run_command"
+wanferenz-bench = "wanferenz.benchmark.cluster:run_command"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["wanferenz*"]
+
+[tool.setuptools.package-data]
+"wanferenz.model" = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["hardware: requires a device", "integration: uses local processes or sockets", "gpu: requires CUDA"]

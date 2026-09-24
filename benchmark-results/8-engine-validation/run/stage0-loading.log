@@ -1,0 +1,24 @@
+[v4] stage[0:23): grouped-MoE bank layout on 23 layer(s) — the routed experts ARE the bank, no duplicate
+[s0] <V4Stage [0:23) WWICICICICICICICICICICI head=True tail=False torch.bfloat16 on cuda pos=0 kernels=tilelang dspark=off taps=[] spec=off/2 snapshot=full graph=whole fast_verify=off moe=grouped>decode>ref/23 ref_slim=off levers=ok>
+[s0] listening 127.0.0.1:29610 -> 192.168.10.154:29610
+========================== V4 LEVER AUDIT (stage) ==========================
+  V4_MOE_GROUPED      requested=on         observed=on/23        OK
+  V4_MOE_DECODE       requested=on         observed=on           OK
+  V4_MOE_MULTI        requested=off        observed=off          OK
+  V4_CUDA_GRAPH       requested=whole      observed=whole        OK
+  V4_MOE_IN_GRAPH     requested=on         observed=armed/23     UNJUDGED
+  V4_FAST_VERIFY      requested=off        observed=off          OK
+  V4_REF_SLIM         requested=off        observed=off          OK
+  V4_REF_SLIM_NOQAT   requested=off        observed=off          OK
+  V4_DSPARK_FAST      requested=absent     observed=unloaded     UNJUDGED — wanferenz.decoding.advance is not imported yet; no parsed value to compare
+  V4_DSPARK_MOE       requested=absent     observed=not-tail     UNJUDGED — wanferenz.decoding.expert_bank is not imported yet; no parsed value to compare
+  V4_DSPARK_BLOCK     requested=absent     observed=not-tail     UNJUDGED — wanferenz.decoding.dspark is not imported yet; no parsed value to compare
+  V4_DRAFT_TOP2       requested=absent     observed=not-tail     UNJUDGED
+  V4_SPEC_DEPTH       requested=2          observed=2            OK
+  V4_SPEC_SNAPSHOT    requested=full       observed=full         VALUE
+  V4_MOE_MULTI_MAX    requested=32         observed=32           VALUE
+  V4_FAST_VERIFY_MAX  requested=16         observed=16           VALUE
+  V4_GRAPH_MAX        requested=192        observed=192          VALUE
+  V4_KERNELS          requested=auto       observed=auto         VALUE
+V4 LEVER AUDIT: all 21 clean
+==========================================================================

@@ -1,0 +1,309 @@
+{
+  "conditions": {
+    "userConfirmedOtherInferenceEngineStopped": true,
+    "network": "normal LAN between 192.168.10.152 and 192.168.10.154",
+    "qsfpUsed": false,
+    "networkSettingsChangedByBenchmark": false,
+    "userRequestedRttMs": 40,
+    "initialObservedRttMs": 40.218,
+    "comparisonBaseline": "benchmark-results/v4-gb10-head-lan-fixed-20260909/summary.json",
+    "baselineModes": {
+      "greedy": "greedy",
+      "spec": "spec-base"
+    },
+    "baselineRttMs": 1.173,
+    "confirmedUtc": "2026-09-09T17:53:29.844262+00:00",
+    "performanceValid": true,
+    "containersStopped": true,
+    "measuredJobs": 8,
+    "referenceTokensIdentical": true,
+    "preloadRttMs": 39.9,
+    "generationRttMs": 40.203
+  },
+  "measuredJobs": 8,
+  "referenceTokensIdentical": true,
+  "modes": {
+    "greedy": {
+      "baselineMedianTps": 7.2065,
+      "addedLatencyMedianTps": 5.615,
+      "tpsLost": 1.5915,
+      "throughputLossPercent": 22.084229515021157,
+      "relativeTimePerTokenIncreasePercent": 28.343722172751562,
+      "baselineRuns": [
+        7.242,
+        7.203,
+        7.21,
+        7.185
+      ],
+      "addedLatencyRuns": [
+        5.608,
+        5.619,
+        5.615,
+        5.615
+      ],
+      "baselineMedianFirstTokenMs": 1052.15,
+      "addedLatencyMedianFirstTokenMs": 1279.45,
+      "pipelineStatistics": [
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null
+        },
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null
+        },
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null
+        },
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null
+        }
+      ]
+    },
+    "spec": {
+      "baselineMedianTps": 9.342500000000001,
+      "addedLatencyMedianTps": 7.836,
+      "tpsLost": 1.5065000000000008,
+      "throughputLossPercent": 16.125234145036128,
+      "relativeTimePerTokenIncreasePercent": 19.22537008677898,
+      "baselineRuns": [
+        9.374,
+        9.315,
+        9.361,
+        9.324
+      ],
+      "addedLatencyRuns": [
+        7.833,
+        7.841,
+        7.838,
+        7.834
+      ],
+      "baselineMedianFirstTokenMs": 1053.75,
+      "addedLatencyMedianFirstTokenMs": 1284.55,
+      "pipelineStatistics": [
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null,
+          "frames": 158,
+          "drafted": 126,
+          "drafts_issued": 126,
+          "lazy": true,
+          "floor": 1,
+          "generated": 128,
+          "accepted": 96,
+          "cancels": 30,
+          "cycles": 31,
+          "rounds": 31,
+          "g": 4.129032258064516,
+          "accept_hist": {
+            "2": 5,
+            "0": 10,
+            "8": 1,
+            "13": 1,
+            "3": 2,
+            "5": 2,
+            "4": 1,
+            "1": 4,
+            "6": 2,
+            "7": 1,
+            "12": 1,
+            "10": 1
+          },
+          "accept_by_depth": {
+            "1": [
+              96,
+              126
+            ]
+          },
+          "topups": 0,
+          "topup_frames": 0,
+          "topup_accept_by_depth": {},
+          "topup_agree": 0,
+          "topup_disagree": 0,
+          "rescue_by_depth": {},
+          "max_inflight": 2,
+          "mean_inflight": 2.0,
+          "inflight_time_avg": 1.99,
+          "decode_wall_s": 14.948,
+          "frames_per_token": 1.234,
+          "block_len": 1,
+          "stale_replies": 31,
+          "unsent_frames": 0
+        },
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null,
+          "frames": 158,
+          "drafted": 126,
+          "drafts_issued": 126,
+          "lazy": true,
+          "floor": 1,
+          "generated": 128,
+          "accepted": 96,
+          "cancels": 30,
+          "cycles": 31,
+          "rounds": 31,
+          "g": 4.129032258064516,
+          "accept_hist": {
+            "2": 5,
+            "0": 10,
+            "8": 1,
+            "13": 1,
+            "3": 2,
+            "5": 2,
+            "4": 1,
+            "1": 4,
+            "6": 2,
+            "7": 1,
+            "12": 1,
+            "10": 1
+          },
+          "accept_by_depth": {
+            "1": [
+              96,
+              126
+            ]
+          },
+          "topups": 0,
+          "topup_frames": 0,
+          "topup_accept_by_depth": {},
+          "topup_agree": 0,
+          "topup_disagree": 0,
+          "rescue_by_depth": {},
+          "max_inflight": 2,
+          "mean_inflight": 2.0,
+          "inflight_time_avg": 1.99,
+          "decode_wall_s": 14.962,
+          "frames_per_token": 1.234,
+          "block_len": 1,
+          "stale_replies": 31,
+          "unsent_frames": 0
+        },
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null,
+          "frames": 158,
+          "drafted": 126,
+          "drafts_issued": 126,
+          "lazy": true,
+          "floor": 1,
+          "generated": 128,
+          "accepted": 96,
+          "cancels": 30,
+          "cycles": 31,
+          "rounds": 31,
+          "g": 4.129032258064516,
+          "accept_hist": {
+            "2": 5,
+            "0": 10,
+            "8": 1,
+            "13": 1,
+            "3": 2,
+            "5": 2,
+            "4": 1,
+            "1": 4,
+            "6": 2,
+            "7": 1,
+            "12": 1,
+            "10": 1
+          },
+          "accept_by_depth": {
+            "1": [
+              96,
+              126
+            ]
+          },
+          "topups": 0,
+          "topup_frames": 0,
+          "topup_accept_by_depth": {},
+          "topup_agree": 0,
+          "topup_disagree": 0,
+          "rescue_by_depth": {},
+          "max_inflight": 2,
+          "mean_inflight": 2.0,
+          "inflight_time_avg": 1.99,
+          "decode_wall_s": 14.963,
+          "frames_per_token": 1.234,
+          "block_len": 1,
+          "stale_replies": 31,
+          "unsent_frames": 0
+        },
+        {
+          "ok": true,
+          "prompt_tokens": 26,
+          "receipts_ok": null,
+          "frames": 158,
+          "drafted": 126,
+          "drafts_issued": 126,
+          "lazy": true,
+          "floor": 1,
+          "generated": 128,
+          "accepted": 96,
+          "cancels": 30,
+          "cycles": 31,
+          "rounds": 31,
+          "g": 4.129032258064516,
+          "accept_hist": {
+            "2": 5,
+            "0": 10,
+            "8": 1,
+            "13": 1,
+            "3": 2,
+            "5": 2,
+            "4": 1,
+            "1": 4,
+            "6": 2,
+            "7": 1,
+            "12": 1,
+            "10": 1
+          },
+          "accept_by_depth": {
+            "1": [
+              96,
+              126
+            ]
+          },
+          "topups": 0,
+          "topup_frames": 0,
+          "topup_accept_by_depth": {},
+          "topup_agree": 0,
+          "topup_disagree": 0,
+          "rescue_by_depth": {},
+          "max_inflight": 2,
+          "mean_inflight": 2.0,
+          "inflight_time_avg": 1.99,
+          "decode_wall_s": 14.97,
+          "frames_per_token": 1.234,
+          "block_len": 1,
+          "stale_replies": 31,
+          "unsent_frames": 0
+        }
+      ]
+    }
+  },
+  "rtt": {
+    "network-rtt.txt": {
+      "minMs": 39.808,
+      "avgMs": 39.9,
+      "maxMs": 40.001,
+      "mdevMs": 0.073
+    },
+    "network-rtt-during-generation.txt": {
+      "minMs": 39.304,
+      "avgMs": 40.203,
+      "maxMs": 40.887,
+      "mdevMs": 0.376
+    }
+  },
+  "additionalRttMs": 39.03,
+  "dsparkGainVsGreedyAtAddedLatencyPercent": 39.554764024933206
+}

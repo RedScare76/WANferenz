@@ -1,0 +1,10 @@
+{
+  "runtime": "llama.cpp with RPC",
+  "model": "DS4 Flash",
+  "throughputTps": 5.32,
+  "samePromptConfiguration": true,
+  "sameMachines": true,
+  "sameLatency": true,
+  "runsAndTimingDefinition": "not supplied",
+  "recordedUtc": "2026-09-09T19:01:49.827414+00:00"
+}

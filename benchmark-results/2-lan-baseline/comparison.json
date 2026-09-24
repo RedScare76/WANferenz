@@ -1,0 +1,177 @@
+{
+  "conditions": {
+    "userConfirmedNoBackgroundDownload": true,
+    "confirmationRecordedUtc": "2026-09-09T15:27:44.607430+00:00",
+    "network": "normal LAN, 192.168.10.152 to 192.168.10.154",
+    "routeDevice": "enP7s7",
+    "qsfpUsed": false
+  },
+  "measuredJobs": 20,
+  "tokenParity": true,
+  "stageSettingsVerified": true,
+  "completeDrafterGraphCaptured": true,
+  "arms": {
+    "greedy": {
+      "runs": 4,
+      "medianTokPerSec": 7.287,
+      "medianFirstTokenMs": 1044.0,
+      "tokensGenerated": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "throughputs": [
+        7.314,
+        7.28,
+        7.294,
+        7.268
+      ],
+      "gainVsSpecBaselineMedianPercent": -21.37038036147828
+    },
+    "spec-base": {
+      "runs": 4,
+      "medianTokPerSec": 9.2675,
+      "medianFirstTokenMs": 1052.15,
+      "tokensGenerated": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "throughputs": [
+        9.304,
+        9.26,
+        9.275,
+        9.243
+      ],
+      "gainVsSpecBaselineMedianPercent": 0.0,
+      "pairedGainsPercent": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "verificationFrames": [
+        158,
+        158,
+        158,
+        158
+      ],
+      "cancels": [
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    "spec-delta": {
+      "runs": 4,
+      "medianTokPerSec": 9.2815,
+      "medianFirstTokenMs": 1049.4,
+      "tokensGenerated": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "throughputs": [
+        9.29,
+        9.28,
+        9.283,
+        9.252
+      ],
+      "gainVsSpecBaselineMedianPercent": 0.15106555165902424,
+      "pairedGainsPercent": [
+        -0.15047291487533254,
+        0.21598272138227959,
+        0.08625336927223781,
+        0.09737098344693162
+      ],
+      "verificationFrames": [
+        158,
+        158,
+        158,
+        158
+      ],
+      "cancels": [
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    "spec-graph": {
+      "runs": 4,
+      "medianTokPerSec": 9.39,
+      "medianFirstTokenMs": 1044.6999999999998,
+      "tokensGenerated": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "throughputs": [
+        9.419,
+        9.397,
+        9.383,
+        9.374
+      ],
+      "gainVsSpecBaselineMedianPercent": 1.3218235770164677,
+      "pairedGainsPercent": [
+        1.2360275150473,
+        1.479481641468694,
+        1.1644204851751994,
+        1.4172887590609085
+      ],
+      "verificationFrames": [
+        158,
+        158,
+        158,
+        158
+      ],
+      "cancels": [
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    "spec-combined": {
+      "runs": 4,
+      "medianTokPerSec": 9.39,
+      "medianFirstTokenMs": 1049.4499999999998,
+      "tokensGenerated": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "throughputs": [
+        9.399,
+        9.397,
+        9.379,
+        9.383
+      ],
+      "gainVsSpecBaselineMedianPercent": 1.3218235770164677,
+      "pairedGainsPercent": [
+        1.0210662080825328,
+        1.479481641468694,
+        1.1212938005390694,
+        1.51465974250784
+      ],
+      "verificationFrames": [
+        158,
+        158,
+        158,
+        158
+      ],
+      "cancels": [
+        30,
+        30,
+        30,
+        30
+      ]
+    }
+  }
+}

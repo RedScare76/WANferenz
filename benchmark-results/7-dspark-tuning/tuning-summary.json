@@ -1,0 +1,135 @@
+[
+  {
+    "width": 5,
+    "arm": "spec-d2-f1-lazy",
+    "options": {
+      "depth": 2,
+      "floor": 1,
+      "lazy": true
+    },
+    "tokPerSec": 7.799,
+    "source": "benchmark-results/v4-exact-width5-20260909"
+  },
+  {
+    "width": 5,
+    "arm": "spec-d2-f3-lazy",
+    "options": {
+      "depth": 2,
+      "floor": 3,
+      "lazy": true
+    },
+    "tokPerSec": 7.778,
+    "source": "benchmark-results/v4-exact-width5-20260909"
+  },
+  {
+    "width": 5,
+    "arm": "spec-d4-f1-lazy",
+    "options": {
+      "depth": 4,
+      "floor": 1,
+      "lazy": true
+    },
+    "tokPerSec": 7.505,
+    "source": "benchmark-results/v4-exact-width5-20260909"
+  },
+  {
+    "width": 5,
+    "arm": "spec-d4-f3-lazy",
+    "options": {
+      "depth": 4,
+      "floor": 3,
+      "lazy": true
+    },
+    "tokPerSec": 5.491,
+    "source": "benchmark-results/v4-exact-width5-20260909"
+  },
+  {
+    "width": 5,
+    "arm": "spec-d4-f1-eager",
+    "options": {
+      "depth": 4,
+      "floor": 1,
+      "lazy": false
+    },
+    "tokPerSec": 6.494,
+    "source": "benchmark-results/v4-exact-width5-20260909"
+  },
+  {
+    "width": 1,
+    "arm": "spec",
+    "options": {
+      "depth": 2,
+      "floor": 1,
+      "lazy": true
+    },
+    "tokPerSec": 9.071,
+    "source": "benchmark-results/v4-exact-width1-20260909"
+  },
+  {
+    "width": 3,
+    "arm": "spec-d2-f1-lazy",
+    "options": {
+      "depth": 2,
+      "floor": 1,
+      "lazy": true
+    },
+    "tokPerSec": 8.312,
+    "source": "benchmark-results/v4-exact-width3-20260909"
+  },
+  {
+    "width": 3,
+    "arm": "spec-d2-f2-lazy",
+    "options": {
+      "depth": 2,
+      "floor": 2,
+      "lazy": true
+    },
+    "tokPerSec": 8.291,
+    "source": "benchmark-results/v4-exact-width3-20260909"
+  },
+  {
+    "width": 3,
+    "arm": "spec-d4-f1-lazy",
+    "options": {
+      "depth": 4,
+      "floor": 1,
+      "lazy": true
+    },
+    "tokPerSec": 7.753,
+    "source": "benchmark-results/v4-exact-width3-20260909"
+  },
+  {
+    "width": 3,
+    "arm": "spec-d4-f2-lazy",
+    "options": {
+      "depth": 4,
+      "floor": 2,
+      "lazy": true
+    },
+    "tokPerSec": 6.42,
+    "source": "benchmark-results/v4-exact-width3-20260909"
+  },
+  {
+    "width": 3,
+    "arm": "spec-d4-f1-eager",
+    "options": {
+      "depth": 4,
+      "floor": 1,
+      "lazy": false
+    },
+    "tokPerSec": 6.879,
+    "source": "benchmark-results/v4-exact-width3-20260909"
+  },
+  {
+    "width": 1,
+    "arm": "spec",
+    "options": {
+      "depth": 2,
+      "floor": 1,
+      "lazy": true
+    },
+    "tokPerSec": 9.272,
+    "source": "benchmark-results/v4-exact-split23-20260909",
+    "split": 23
+  }
+]

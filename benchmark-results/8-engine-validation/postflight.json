@@ -1,0 +1,84 @@
+[
+  {
+    "timestamp": 1789802086.9823356,
+    "node": "dgx1",
+    "benchmarkContainerState": {
+      "exitCode": 0,
+      "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":137,\"Error\":\"\",\"StartedAt\":\"2026-09-19T07:00:23.774505507Z\",\"FinishedAt\":\"2026-09-19T07:14:32.257150942Z\"}\n",
+      "stderr": ""
+    },
+    "benchmarkContainerRemoval": {
+      "exitCode": 0,
+      "stdout": "wanferenz-v4-20260919T070019Z-head\n",
+      "stderr": ""
+    },
+    "gpu": {
+      "exitCode": 0,
+      "stdout": "Sat Sep 19 08:14:46 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.173.02             Driver Version: 580.173.02     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GB10                    On  |   0000000F:01:00.0 Off |                  N/A |\n| N/A   46C    P8              4W /  N/A  | Not Supported          |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A         2177576      G   /usr/lib/xorg/Xorg                       66MiB |\n|    0   N/A  N/A         2177667      G   /usr/bin/gnome-shell                     30MiB |\n+-----------------------------------------------------------------------------------------+\n",
+      "stderr": ""
+    },
+    "computeProcesses": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "containers": {
+      "exitCode": 0,
+      "stdout": "wanferenz-cleanup-check wanferenz-pipeline-explorer:cleanup Up 6 days\n",
+      "stderr": ""
+    },
+    "qdisc": {
+      "exitCode": 0,
+      "stdout": "qdisc mq 0: root \nqdisc fq_codel 0: parent :1 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64 \n",
+      "stderr": ""
+    },
+    "memory": {
+      "exitCode": 0,
+      "stdout": "               total        used        free      shared  buff/cache   available\nMem:     130595991552  5366312960 120978538496    31694848  5372735488 125229678592\nSwap:    17179865088  3331170304 13848694784\n",
+      "stderr": ""
+    },
+    "qdiscUnchanged": true,
+    "noComputeProcessRemaining": true
+  },
+  {
+    "timestamp": 1789802087.9380176,
+    "node": "dgx2",
+    "benchmarkContainerState": {
+      "exitCode": 0,
+      "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":1,\"Error\":\"\",\"StartedAt\":\"2026-09-19T07:00:23.43172356Z\",\"FinishedAt\":\"2026-09-19T07:14:32.954199996Z\"}\n",
+      "stderr": ""
+    },
+    "benchmarkContainerRemoval": {
+      "exitCode": 0,
+      "stdout": "wanferenz-v4-20260919T070019Z-tail\n",
+      "stderr": ""
+    },
+    "gpu": {
+      "exitCode": 0,
+      "stdout": "Sat Sep 19 09:14:48 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.173.02             Driver Version: 580.173.02     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA GB10                    On  |   0000000F:01:00.0 Off |                  N/A |\n| N/A   48C    P8              4W /  N/A  | Not Supported          |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A           62273      G   /usr/lib/xorg/Xorg                       66MiB |\n|    0   N/A  N/A           62365      G   /usr/bin/gnome-shell                     27MiB |\n+-----------------------------------------------------------------------------------------+\n",
+      "stderr": ""
+    },
+    "computeProcesses": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "containers": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "qdisc": {
+      "exitCode": 0,
+      "stdout": "qdisc mq 0: root \nqdisc fq_codel 0: parent :1 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64 \n",
+      "stderr": ""
+    },
+    "memory": {
+      "exitCode": 0,
+      "stdout": "               gesamt       benutzt     frei      gemns.  Puffer/Cache verf\u00fcgbar\nSpeicher:130595991552  4234080256 124561719296    15982592  2989613056 126361911296\nAuslager:17179865088   405594112 16774270976\n",
+      "stderr": ""
+    },
+    "qdiscUnchanged": true,
+    "noComputeProcessRemaining": true
+  }
+]
